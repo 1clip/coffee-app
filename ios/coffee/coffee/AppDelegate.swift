@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         window?.makeKeyAndVisible()
-        
+        NSLog("achiel: %@", AFNetworkingOperationDidFinishNotification)
         return true
     }
 

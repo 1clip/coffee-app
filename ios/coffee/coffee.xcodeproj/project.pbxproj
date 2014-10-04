@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0752C619DFA70500B17408 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0752C519DFA70500B17408 /* Enums.swift */; };
+		0E0752C819DFCE7800B17408 /* Hangout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0752C719DFCE7800B17408 /* Hangout.swift */; };
+		0E0752CA19DFE3CA00B17408 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0752C919DFE3CA00B17408 /* Group.swift */; };
 		0E8420C219D8F839004F73D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8420C119D8F839004F73D6 /* AppDelegate.swift */; };
 		0E8420C919D8F839004F73D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8420C819D8F839004F73D6 /* Images.xcassets */; };
-		0E8420D819D8F839004F73D6 /* coffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8420D719D8F839004F73D6 /* coffeeTests.swift */; };
+		0E8420D819D8F839004F73D6 /* coffeeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8420D719D8F839004F73D6 /* coffeeModelTests.swift */; };
+		0E89FDED19DF9BFC00105E08 /* Bases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89FDEC19DF9BFC00105E08 /* Bases.swift */; };
+		0E89FDEF19DF9CE500105E08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89FDEE19DF9CE500105E08 /* User.swift */; };
+		6CC35909A1323CB08A984EF2 /* libPods-coffeeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD13BD2863AA823383315C5 /* libPods-coffeeTests.a */; };
+		D0F29582245FEB627F2EF338 /* libPods-coffee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C53A4ECBA2D2B4534F867D /* libPods-coffee.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,13 +30,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E0752C519DFA70500B17408 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0E0752C719DFCE7800B17408 /* Hangout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hangout.swift; sourceTree = "<group>"; };
+		0E0752C919DFE3CA00B17408 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		0E12ABD619DF944400E6E0CF /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
 		0E8420BC19D8F839004F73D6 /* coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8420C019D8F839004F73D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E8420C119D8F839004F73D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E8420C819D8F839004F73D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0E8420D119D8F839004F73D6 /* coffeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coffeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8420D619D8F839004F73D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E8420D719D8F839004F73D6 /* coffeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coffeeTests.swift; sourceTree = "<group>"; };
+		0E8420D719D8F839004F73D6 /* coffeeModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coffeeModelTests.swift; sourceTree = "<group>"; };
+		0E89FDEC19DF9BFC00105E08 /* Bases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bases.swift; sourceTree = "<group>"; };
+		0E89FDEE19DF9CE500105E08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0EA3434119DDBF4400700628 /* bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridging_header.h; sourceTree = "<group>"; };
+		3517A5A2143A80D87633D86B /* Pods-coffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffee.release.xcconfig"; path = "Pods/Target Support Files/Pods-coffee/Pods-coffee.release.xcconfig"; sourceTree = "<group>"; };
+		3769E07D2054FACEFEC1300F /* Pods-coffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-coffeeTests/Pods-coffeeTests.release.xcconfig"; sourceTree = "<group>"; };
+		898A498EB761896FA5C27213 /* Pods-coffeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-coffeeTests/Pods-coffeeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ACD13BD2863AA823383315C5 /* libPods-coffeeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffeeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA8D1974057653EB8E7F75FE /* Pods-coffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-coffee/Pods-coffee.debug.xcconfig"; sourceTree = "<group>"; };
+		E4C53A4ECBA2D2B4534F867D /* libPods-coffee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffee.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F29582245FEB627F2EF338 /* libPods-coffee.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CC35909A1323CB08A984EF2 /* libPods-coffeeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +78,8 @@
 				0E8420BE19D8F839004F73D6 /* coffee */,
 				0E8420D419D8F839004F73D6 /* coffeeTests */,
 				0E8420BD19D8F839004F73D6 /* Products */,
+				2D770898DB67984BA2AA7224 /* Pods */,
+				AFE91815EF69521360EEB798 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,8 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				0E8420C119D8F839004F73D6 /* AppDelegate.swift */,
+				0E89FDEB19DF9BFC00105E08 /* Data Models */,
 				0E8420C819D8F839004F73D6 /* Images.xcassets */,
 				0E8420BF19D8F839004F73D6 /* Supporting Files */,
+				0EA3434119DDBF4400700628 /* bridging_header.h */,
 			);
 			path = coffee;
 			sourceTree = "<group>";
@@ -89,8 +115,9 @@
 		0E8420D419D8F839004F73D6 /* coffeeTests */ = {
 			isa = PBXGroup;
 			children = (
-				0E8420D719D8F839004F73D6 /* coffeeTests.swift */,
+				0E8420D719D8F839004F73D6 /* coffeeModelTests.swift */,
 				0E8420D519D8F839004F73D6 /* Supporting Files */,
+				0E12ABD619DF944400E6E0CF /* bridging_header.h */,
 			);
 			path = coffeeTests;
 			sourceTree = "<group>";
@@ -103,6 +130,38 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0E89FDEB19DF9BFC00105E08 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E89FDEC19DF9BFC00105E08 /* Bases.swift */,
+				0E89FDEE19DF9CE500105E08 /* User.swift */,
+				0E0752C519DFA70500B17408 /* Enums.swift */,
+				0E0752C719DFCE7800B17408 /* Hangout.swift */,
+				0E0752C919DFE3CA00B17408 /* Group.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		2D770898DB67984BA2AA7224 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA8D1974057653EB8E7F75FE /* Pods-coffee.debug.xcconfig */,
+				3517A5A2143A80D87633D86B /* Pods-coffee.release.xcconfig */,
+				898A498EB761896FA5C27213 /* Pods-coffeeTests.debug.xcconfig */,
+				3769E07D2054FACEFEC1300F /* Pods-coffeeTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AFE91815EF69521360EEB798 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4C53A4ECBA2D2B4534F867D /* libPods-coffee.a */,
+				ACD13BD2863AA823383315C5 /* libPods-coffeeTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,9 +169,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E8420DB19D8F839004F73D6 /* Build configuration list for PBXNativeTarget "coffee" */;
 			buildPhases = (
+				1ACC0C8D1D75662C56D4E6F1 /* Check Pods Manifest.lock */,
 				0E8420B819D8F839004F73D6 /* Sources */,
 				0E8420B919D8F839004F73D6 /* Frameworks */,
 				0E8420BA19D8F839004F73D6 /* Resources */,
+				3DB0D64F2998D1FBE8C92608 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E8420DE19D8F839004F73D6 /* Build configuration list for PBXNativeTarget "coffeeTests" */;
 			buildPhases = (
+				22DB75B33154F38D097987EB /* Check Pods Manifest.lock */,
 				0E8420CD19D8F839004F73D6 /* Sources */,
 				0E8420CE19D8F839004F73D6 /* Frameworks */,
 				0E8420CF19D8F839004F73D6 /* Resources */,
+				EA380B18DA100CA13D4D7883 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,12 +259,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1ACC0C8D1D75662C56D4E6F1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		22DB75B33154F38D097987EB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3DB0D64F2998D1FBE8C92608 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-coffee/Pods-coffee-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA380B18DA100CA13D4D7883 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-coffeeTests/Pods-coffeeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E8420B819D8F839004F73D6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E89FDED19DF9BFC00105E08 /* Bases.swift in Sources */,
 				0E8420C219D8F839004F73D6 /* AppDelegate.swift in Sources */,
+				0E0752C819DFCE7800B17408 /* Hangout.swift in Sources */,
+				0E0752CA19DFE3CA00B17408 /* Group.swift in Sources */,
+				0E0752C619DFA70500B17408 /* Enums.swift in Sources */,
+				0E89FDEF19DF9CE500105E08 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E8420D819D8F839004F73D6 /* coffeeTests.swift in Sources */,
+				0E8420D819D8F839004F73D6 /* coffeeModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,26 +434,31 @@
 		};
 		0E8420DC19D8F839004F73D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA8D1974057653EB8E7F75FE /* Pods-coffee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = coffee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = coffee/bridging_header.h;
 			};
 			name = Debug;
 		};
 		0E8420DD19D8F839004F73D6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3517A5A2143A80D87633D86B /* Pods-coffee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = coffee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = coffee/bridging_header.h;
 			};
 			name = Release;
 		};
 		0E8420DF19D8F839004F73D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 898A498EB761896FA5C27213 /* Pods-coffeeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -336,12 +472,14 @@
 				INFOPLIST_FILE = coffeeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = coffeeTests/bridging_header.h;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coffee.app/coffee";
 			};
 			name = Debug;
 		};
 		0E8420E019D8F839004F73D6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3769E07D2054FACEFEC1300F /* Pods-coffeeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -351,6 +489,7 @@
 				INFOPLIST_FILE = coffeeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = coffeeTests/bridging_header.h;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coffee.app/coffee";
 			};
 			name = Release;
@@ -374,6 +513,7 @@
 				0E8420DD19D8F839004F73D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E8420DE19D8F839004F73D6 /* Build configuration list for PBXNativeTarget "coffeeTests" */ = {
 			isa = XCConfigurationList;
@@ -382,6 +522,7 @@
 				0E8420E019D8F839004F73D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
