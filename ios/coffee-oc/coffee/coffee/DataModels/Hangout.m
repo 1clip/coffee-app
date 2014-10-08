@@ -14,6 +14,14 @@
 
 @implementation Hangout
 
+-(NSMutableArray<Participator, Optional>*) participators {
+    if (!_participators) {
+        _participators = (NSMutableArray<Participator, Optional>*)[NSMutableArray array];
+    }
+    
+    return _participators;
+}
+
 @end
 
 @implementation HangoutSummary

@@ -8,11 +8,8 @@
 
 #import "Bases.h"
 
-@protocol Group
-@end
-
-@protocol Friend
-@end
+@protocol Group;
+@protocol Friend;
 
 @interface Group : IdObject
 

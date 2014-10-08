@@ -7,19 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JSONModel/JSONModel.h"
+#import "JSONModel.h"
 
 @interface IdObject : JSONModel
 
-@property (strong, nonatomic) NSString* id;
+@property (assign, nonatomic) long id;
 
++(instancetype) idWithValue:(long) id;
 +(JSONKeyMapper*) keyMapper;
 
 @end
 
 @interface AvatarInfo : IdObject
 
-@property (strong, nonatomic) NSString* token;
+@property (assign, nonatomic) long token;
 
 @end
 

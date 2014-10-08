@@ -10,6 +10,14 @@
 
 @implementation IdObject
 
++(instancetype) idWithValue:(long) id
+{
+    IdObject* instance = [[IdObject alloc] init];
+    instance.id = id;
+    
+    return instance;
+}
+
 +(JSONKeyMapper*) keyMapper
 {
     return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];

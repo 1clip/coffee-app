@@ -8,9 +8,7 @@
 
 #import "Bases.h"
 
-@protocol Participator
-@end
-
+@protocol Participator;
 @interface Participator : Character
 
 @property (strong, nonatomic) NSString<Optional>* role;
@@ -20,7 +18,6 @@
 @property (assign, nonatomic) NSInteger errorCode;
 
 @end
-
 
 @interface Hangout : IdObject
 
@@ -39,6 +36,7 @@
 @end
 
 
+@protocol HangoutSummary;
 @interface HangoutSummary : IdObject
     
 @property (strong, nonatomic) NSString* activity;

@@ -10,12 +10,18 @@
 		0E07530C19E2254F00B17408 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E07530B19E2254F00B17408 /* main.m */; };
 		0E07530F19E2254F00B17408 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E07530E19E2254F00B17408 /* AppDelegate.m */; };
 		0E07531719E2254F00B17408 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E07531619E2254F00B17408 /* Images.xcassets */; };
-		0E07532619E2254F00B17408 /* coffeeModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E07532519E2254F00B17408 /* coffeeModelTests.m */; };
+		0E07532619E2254F00B17408 /* DataModelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E07532519E2254F00B17408 /* DataModelsTests.m */; };
 		0E21A51819E2985400BF32C2 /* Bases.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E21A51219E2985400BF32C2 /* Bases.m */; };
 		0E21A51919E2985400BF32C2 /* Hangout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E21A51519E2985400BF32C2 /* Hangout.m */; };
 		0E21A51A19E2985400BF32C2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E21A51719E2985400BF32C2 /* User.m */; };
 		0E21A51D19E29AE200BF32C2 /* Enums.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E21A51C19E29AE200BF32C2 /* Enums.m */; };
+		0EDF7B4A19E379B800C4E695 /* CoffeeAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF7B4919E379B800C4E695 /* CoffeeAPITests.m */; };
+		0EDF7B5919E5223400C4E695 /* CoffeeTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF7B5819E5223400C4E695 /* CoffeeTestCase.m */; };
+		0EDF7B5C19E522F300C4E695 /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF7B5B19E522F300C4E695 /* TestDataGenerator.m */; };
 		0EE7CC7C19E2F3580053BA92 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE7CC7B19E2F3580053BA92 /* Group.m */; };
+		0EFD8A2619E59A3F001CFEAB /* JSONModelRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD8A2519E59A3F001CFEAB /* JSONModelRequestSerializer.m */; };
+		0EFD8A2919E59A5E001CFEAB /* CoffeeAPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD8A2819E59A5E001CFEAB /* CoffeeAPIError.m */; };
+		0EFD8A2C19E59A6F001CFEAB /* CoffeeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD8A2B19E59A6F001CFEAB /* CoffeeAPI.m */; };
 		1E4DB0B9E474BD38095FDFBB /* libPods-coffee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 597921EC47B53B0F4D7162C3 /* libPods-coffee.a */; };
 		975A5BCAA7EC0864334E9D47 /* libPods-coffeeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */; };
 /* End PBXBuildFile section */
@@ -40,7 +46,7 @@
 		0E07531619E2254F00B17408 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0E07531F19E2254F00B17408 /* coffeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coffeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E07532419E2254F00B17408 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E07532519E2254F00B17408 /* coffeeModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = coffeeModelTests.m; sourceTree = "<group>"; };
+		0E07532519E2254F00B17408 /* DataModelsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModelsTests.m; sourceTree = "<group>"; };
 		0E21A51119E2985400BF32C2 /* Bases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bases.h; path = DataModels/Bases.h; sourceTree = "<group>"; };
 		0E21A51219E2985400BF32C2 /* Bases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bases.m; path = DataModels/Bases.m; sourceTree = "<group>"; };
 		0E21A51319E2985400BF32C2 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataModels.h; path = DataModels/DataModels.h; sourceTree = "<group>"; };
@@ -50,8 +56,19 @@
 		0E21A51719E2985400BF32C2 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = DataModels/User.m; sourceTree = "<group>"; };
 		0E21A51B19E29AE200BF32C2 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enums.h; path = DataModels/Enums.h; sourceTree = "<group>"; };
 		0E21A51C19E29AE200BF32C2 /* Enums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enums.m; path = DataModels/Enums.m; sourceTree = "<group>"; };
+		0EDF7B4919E379B800C4E695 /* CoffeeAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeAPITests.m; sourceTree = "<group>"; };
+		0EDF7B5719E5223400C4E695 /* CoffeeTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTestCase.h; sourceTree = "<group>"; };
+		0EDF7B5819E5223400C4E695 /* CoffeeTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTestCase.m; sourceTree = "<group>"; };
+		0EDF7B5A19E522F300C4E695 /* TestDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDataGenerator.h; sourceTree = "<group>"; };
+		0EDF7B5B19E522F300C4E695 /* TestDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDataGenerator.m; sourceTree = "<group>"; };
 		0EE7CC7A19E2F3580053BA92 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = DataModels/Group.h; sourceTree = "<group>"; };
 		0EE7CC7B19E2F3580053BA92 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = DataModels/Group.m; sourceTree = "<group>"; };
+		0EFD8A2419E59A3F001CFEAB /* JSONModelRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelRequestSerializer.h; sourceTree = "<group>"; };
+		0EFD8A2519E59A3F001CFEAB /* JSONModelRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelRequestSerializer.m; sourceTree = "<group>"; };
+		0EFD8A2719E59A5E001CFEAB /* CoffeeAPIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeAPIError.h; sourceTree = "<group>"; };
+		0EFD8A2819E59A5E001CFEAB /* CoffeeAPIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeAPIError.m; sourceTree = "<group>"; };
+		0EFD8A2A19E59A6F001CFEAB /* CoffeeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeAPI.h; sourceTree = "<group>"; };
+		0EFD8A2B19E59A6F001CFEAB /* CoffeeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeAPI.m; sourceTree = "<group>"; };
 		336ACB363929E815CA0DDFD4 /* Pods-coffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-coffeeTests/Pods-coffeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffeeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597921EC47B53B0F4D7162C3 /* libPods-coffee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffee.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +119,7 @@
 		0E07530819E2254F00B17408 /* coffee */ = {
 			isa = PBXGroup;
 			children = (
+				0EFD8A2319E59A3F001CFEAB /* CoffeeAPI */,
 				0E21A50519E22A5A00BF32C2 /* DataModels */,
 				0E07530D19E2254F00B17408 /* AppDelegate.h */,
 				0E07530E19E2254F00B17408 /* AppDelegate.m */,
@@ -123,7 +141,9 @@
 		0E07532219E2254F00B17408 /* coffeeTests */ = {
 			isa = PBXGroup;
 			children = (
-				0E07532519E2254F00B17408 /* coffeeModelTests.m */,
+				0EDF7B5619E5223400C4E695 /* Helpers */,
+				0E07532519E2254F00B17408 /* DataModelsTests.m */,
+				0EDF7B4919E379B800C4E695 /* CoffeeAPITests.m */,
 				0E07532319E2254F00B17408 /* Supporting Files */,
 			);
 			path = coffeeTests;
@@ -153,6 +173,30 @@
 				0EE7CC7B19E2F3580053BA92 /* Group.m */,
 			);
 			name = DataModels;
+			sourceTree = "<group>";
+		};
+		0EDF7B5619E5223400C4E695 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0EDF7B5719E5223400C4E695 /* CoffeeTestCase.h */,
+				0EDF7B5819E5223400C4E695 /* CoffeeTestCase.m */,
+				0EDF7B5A19E522F300C4E695 /* TestDataGenerator.h */,
+				0EDF7B5B19E522F300C4E695 /* TestDataGenerator.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0EFD8A2319E59A3F001CFEAB /* CoffeeAPI */ = {
+			isa = PBXGroup;
+			children = (
+				0EFD8A2419E59A3F001CFEAB /* JSONModelRequestSerializer.h */,
+				0EFD8A2519E59A3F001CFEAB /* JSONModelRequestSerializer.m */,
+				0EFD8A2719E59A5E001CFEAB /* CoffeeAPIError.h */,
+				0EFD8A2819E59A5E001CFEAB /* CoffeeAPIError.m */,
+				0EFD8A2A19E59A6F001CFEAB /* CoffeeAPI.h */,
+				0EFD8A2B19E59A6F001CFEAB /* CoffeeAPI.m */,
+			);
+			path = CoffeeAPI;
 			sourceTree = "<group>";
 		};
 		95866A0C9ADE15C8E2FBB201 /* Frameworks */ = {
@@ -341,10 +385,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E21A51D19E29AE200BF32C2 /* Enums.m in Sources */,
+				0EFD8A2919E59A5E001CFEAB /* CoffeeAPIError.m in Sources */,
+				0EFD8A2C19E59A6F001CFEAB /* CoffeeAPI.m in Sources */,
 				0E21A51A19E2985400BF32C2 /* User.m in Sources */,
 				0EE7CC7C19E2F3580053BA92 /* Group.m in Sources */,
 				0E21A51819E2985400BF32C2 /* Bases.m in Sources */,
 				0E07530F19E2254F00B17408 /* AppDelegate.m in Sources */,
+				0EFD8A2619E59A3F001CFEAB /* JSONModelRequestSerializer.m in Sources */,
 				0E21A51919E2985400BF32C2 /* Hangout.m in Sources */,
 				0E07530C19E2254F00B17408 /* main.m in Sources */,
 			);
@@ -354,7 +401,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E07532619E2254F00B17408 /* coffeeModelTests.m in Sources */,
+				0EDF7B4A19E379B800C4E695 /* CoffeeAPITests.m in Sources */,
+				0E07532619E2254F00B17408 /* DataModelsTests.m in Sources */,
+				0EDF7B5919E5223400C4E695 /* CoffeeTestCase.m in Sources */,
+				0EDF7B5C19E522F300C4E695 /* TestDataGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
