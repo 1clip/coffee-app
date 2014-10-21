@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSString<Optional>* state;
 
-@property (assign, nonatomic) NSInteger errorCode;
+@property (assign, nonatomic) NSNumber<Optional>* errorCode;
 
 @end
 
@@ -49,7 +49,7 @@
     
 @property (assign, nonatomic) NSInteger numAccepted;
     
-@property (assign, nonatomic) NSInteger numDeclined;
+@property (assign, nonatomic) NSInteger numRejected;
     
 @property (assign, nonatomic) NSInteger numPending;
 

@@ -23,22 +23,21 @@
 {
     NSParameterAssert(request);
     
-    if ([self.HTTPMethodsEncodingParametersInURI containsObject:[[request HTTPMethod] uppercaseString]]) {
-        return [super requestBySerializingRequest:request withParameters:parameters error:error];
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    IdObject* currentUserId = [CoffeeAPI currentUserId];
+    if (currentUserId && currentUserId.id) {
+        [mutableRequest setValue:[NSString stringWithFormat:@"%ld", currentUserId.id] forHTTPHeaderField:@"user-id"];
     }
     
-    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    if ([self.HTTPMethodsEncodingParametersInURI containsObject:[[request HTTPMethod] uppercaseString]]) {
+        return [super requestBySerializingRequest:mutableRequest withParameters:parameters error:error];
+    }
     
     [self.HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(id field, id value, BOOL * __unused stop) {
         if (![request valueForHTTPHeaderField:field]) {
             [mutableRequest setValue:value forHTTPHeaderField:field];
         }
     }];
-    
-    IdObject* currentUserId = [CoffeeAPI currentUserId];
-    if (currentUserId && currentUserId.id) {
-        [mutableRequest setValue:[NSString stringWithFormat:@"%ld", currentUserId.id] forHTTPHeaderField:@"user-id"];
-    }
     
     if (parameters) {
         if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {

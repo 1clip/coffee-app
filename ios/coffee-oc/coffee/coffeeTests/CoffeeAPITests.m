@@ -29,39 +29,81 @@
 }
 
 - (void)testPostUser {
-    // This is an example of a functional test case.
-    User* testUser = [TestDataGenerator userWithPrefix:@"foo_bar"];
-    __block User* user = nil;
-    __block NSError* error = nil;
-    NSURLSessionDataTask* task = [self.coffeeAPI createUser:testUser
-             completionHandler:^(User* response, NSError* err) {
-                 user = response;
-                 error = err;
-             }];
     
-    EXP_expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
-    EXP_expect(error).to.beNil();
-    EXP_expect(user).notTo.beNil();
-    EXP_expect(user.id).notTo.equal(0);
-    EXP_expect(user.loginName).to.equal(testUser.loginName);
+    User* postedUser;
+    
+    [self postUser:&postedUser];
 }
 
 - (void)testPostHangout {
     
+    User* orgnizer;
+    [self postUser:&orgnizer];
+    
+    Hangout* hangout;
+    [self postHangout:&hangout withOrgnizer:orgnizer];
+}
+
+- (void)testGetHangoutSummary {
+    
+    User* orgnizer;
+    [self postUser:&orgnizer];
+    
+    NSInteger numHangouts = 2;
+    Hangout* hangout;
+    for (int i=0; i<numHangouts; ++i) {
+        [self postHangout:&hangout withOrgnizer:orgnizer];
+    }
+
+    __block NSArray<HangoutSummary>* hangoutSummaries;
+    __block NSError* error;
+    NSURLSessionDataTask* task = [self.coffeeAPI getActiveHangoutSummaries:^(NSArray<HangoutSummary> *response, NSError *error) {
+        hangoutSummaries = response;
+        error = error;
+    }];
+    
+    EXP_expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
+    EXP_expect(error).to.beNil();
+    EXP_expect(hangoutSummaries.count).to.equal(numHangouts);
+}
+
+#pragma mark - Post test models
+
+- (void)postUser:(User**)postedUser {
+    
+    User* testUser = [TestDataGenerator userWithPrefix:@"foo_bar"];
+    
     __block User* user = nil;
     __block NSError* error = nil;
-    NSURLSessionDataTask* task = [self.coffeeAPI createUser:[TestDataGenerator userWithPrefix:@"foo_bar"]
+    NSURLSessionDataTask* task = [self.coffeeAPI createUser:testUser
                                           completionHandler:^(User* response, NSError* err) {
                                               user = response;
                                               error = err;
                                           }];
     
     EXP_expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
-    EXP_expect([CoffeeAPI currentUserId]).notTo.beNil();
+    EXP_expect(error).to.beNil();
+    EXP_expect(user).notTo.beNil();
+    EXP_expect(user.id).notTo.equal(0);
+    EXP_expect(user.loginName).to.equal(testUser.loginName);
     
+    *postedUser = user;
+}
+
+- (void)postHangout:(Hangout**) postedHangout
+           withOrgnizer:(User*)orgnizer {
+
     Hangout* testHangout = [TestDataGenerator hangoutNeedId:NO];
+    User* participator = nil;
+    for (int i=0; i < testHangout.participators.count; ++i) {
+        [self postUser:&participator];
+        ((IdObject*) testHangout.participators[i]).id = participator.id;
+    }
+    
+    [CoffeeAPI setCurrentUserId:[IdObject idWithValue:orgnizer.id]];
     __block Hangout* hangout = nil;
-    task = [self.coffeeAPI createHangout:testHangout
+    __block NSError* error = nil;
+    NSURLSessionDataTask* task = [self.coffeeAPI createHangout:testHangout
                        completionHandler:^(Hangout* response, NSError* err) {
                            hangout = response;
                            error = err;
@@ -69,7 +111,14 @@
     
     EXP_expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
     EXP_expect(hangout.id).notTo.equal(0);
+    EXP_expect(hangout.activity).to.equal(testHangout.activity);
     EXP_expect(hangout.subject).to.equal(testHangout.subject);
+    EXP_expect(hangout.location).to.equal(testHangout.location);
+    EXP_expect(hangout.startTime).to.equal(testHangout.startTime);
+    EXP_expect(hangout.endTime).to.equal(testHangout.endTime);
+    EXP_expect(hangout.participators.count).to.equal(testHangout.participators.count);
+    
+    *postedHangout = hangout;
 }
 
 @end

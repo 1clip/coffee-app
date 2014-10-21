@@ -121,9 +121,19 @@
     return [self.sessionManager GET:@"hangouts?state=active"
                          parameters:nil
                             success:^(NSURLSessionDataTask *task, id responseObject) {
-                                NSArray<HangoutSummary> * response = nil;
-                                JSONModelError* modelError;
-                                // response = [[Hangout alloc] initWithDictionary:(NSDictionary *)responseObject error:&modelError];
+                                NSMutableArray<HangoutSummary>* response = (NSMutableArray<HangoutSummary>*) [NSMutableArray array];
+                                JSONModelError* modelError = nil;
+                                
+                                if (responseObject) {
+                                    NSArray* responseArray = (NSArray*)responseObject;
+                                    for (int i=0; i<responseArray.count; ++i) {
+                                        HangoutSummary* hangoutSummary = [[HangoutSummary alloc] initWithDictionary:(NSDictionary *)responseArray[i] error:&modelError];
+                                        if (modelError) {
+                                            break;
+                                        }
+                                        [response addObject:hangoutSummary];
+                                    }
+                                }
                                 
                                 if (modelError) {
                                     completionHandler(nil, modelError);
