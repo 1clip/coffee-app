@@ -1,0 +1,23 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#define isRunningOnIOS7           [[UIDevice currentDevice] isIOS7]
+#define isRunningOnIOS8           [[UIDevice currentDevice] isIOS8]
+#define UIColorFromRGBC(rgbValue)   [UIColor colorWithRed:(float)rgbValue/255 green:(float)rgbValue/255 blue:(float)rgbValue/255 alpha:1]
+#define PDColorBarTitleColorDefault [UIColor colorWithRGBHex:0x262626]
+#define PDColorBarBgColorDefault    [UIColor colorWithRGBHex:0xffffff]
+#define PDColorMale                 [UIColor colorWithRGBHex:0x47a2ed]
+#define PDColorFemale               [UIColor colorWithRGBHex:0xff8ca1]
+#define PDColorStudent              [UIColor colorWithRGBHex:0x61c200]
+#define PDColorViewDefaultBGColor   [UIColor colorWithRGBHex:0xf0f1f2]
+#define PDColorDefaultPurple        [UIColor colorWithRGBHex:0x62388c] //[UIColor colorWithRGBHex:0x885ba6]
+#define PDColorSeparator            [UIColor colorWithRGBHex:0xd9d9d9]
