@@ -15,6 +15,8 @@
 		0E21A51919E2985400BF32C2 /* Hangout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E21A51519E2985400BF32C2 /* Hangout.m */; };
 		0E21A51A19E2985400BF32C2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E21A51719E2985400BF32C2 /* User.m */; };
 		0E21A51D19E29AE200BF32C2 /* Enums.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E21A51C19E29AE200BF32C2 /* Enums.m */; };
+		0ED8E3CD1A286BDF0072E833 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED8E3CC1A286BDF0072E833 /* Default-568h@2x.png */; };
+		0ED8E3D11A286C320072E833 /* CFAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED8E3D01A286C320072E833 /* CFAvatarView.m */; };
 		0EDF7B4A19E379B800C4E695 /* CoffeeAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF7B4919E379B800C4E695 /* CoffeeAPITests.m */; };
 		0EDF7B5919E5223400C4E695 /* CoffeeTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF7B5819E5223400C4E695 /* CoffeeTestCase.m */; };
 		0EDF7B5C19E522F300C4E695 /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF7B5B19E522F300C4E695 /* TestDataGenerator.m */; };
@@ -56,6 +58,9 @@
 		0E21A51719E2985400BF32C2 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = DataModels/User.m; sourceTree = "<group>"; };
 		0E21A51B19E29AE200BF32C2 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enums.h; path = DataModels/Enums.h; sourceTree = "<group>"; };
 		0E21A51C19E29AE200BF32C2 /* Enums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enums.m; path = DataModels/Enums.m; sourceTree = "<group>"; };
+		0ED8E3CC1A286BDF0072E833 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0ED8E3CF1A286C320072E833 /* CFAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAvatarView.h; sourceTree = "<group>"; };
+		0ED8E3D01A286C320072E833 /* CFAvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAvatarView.m; sourceTree = "<group>"; };
 		0EDF7B4919E379B800C4E695 /* CoffeeAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeAPITests.m; sourceTree = "<group>"; };
 		0EDF7B5719E5223400C4E695 /* CoffeeTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTestCase.h; sourceTree = "<group>"; };
 		0EDF7B5819E5223400C4E695 /* CoffeeTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTestCase.m; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 		0E0752FD19E2254F00B17408 = {
 			isa = PBXGroup;
 			children = (
+				0ED8E3CC1A286BDF0072E833 /* Default-568h@2x.png */,
 				0E07530819E2254F00B17408 /* coffee */,
 				0E07532219E2254F00B17408 /* coffeeTests */,
 				0E07530719E2254F00B17408 /* Products */,
@@ -119,6 +125,7 @@
 		0E07530819E2254F00B17408 /* coffee */ = {
 			isa = PBXGroup;
 			children = (
+				0ED8E3CE1A286C320072E833 /* UIKit */,
 				0EFD8A2319E59A3F001CFEAB /* CoffeeAPI */,
 				0E21A50519E22A5A00BF32C2 /* DataModels */,
 				0E07530D19E2254F00B17408 /* AppDelegate.h */,
@@ -173,6 +180,15 @@
 				0EE7CC7B19E2F3580053BA92 /* Group.m */,
 			);
 			name = DataModels;
+			sourceTree = "<group>";
+		};
+		0ED8E3CE1A286C320072E833 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				0ED8E3CF1A286C320072E833 /* CFAvatarView.h */,
+				0ED8E3D01A286C320072E833 /* CFAvatarView.m */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		0EDF7B5619E5223400C4E695 /* Helpers */ = {
@@ -304,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E07531719E2254F00B17408 /* Images.xcassets in Resources */,
+				0ED8E3CD1A286BDF0072E833 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +405,7 @@
 				0EFD8A2919E59A5E001CFEAB /* CoffeeAPIError.m in Sources */,
 				0EFD8A2C19E59A6F001CFEAB /* CoffeeAPI.m in Sources */,
 				0E21A51A19E2985400BF32C2 /* User.m in Sources */,
+				0ED8E3D11A286C320072E833 /* CFAvatarView.m in Sources */,
 				0EE7CC7C19E2F3580053BA92 /* Group.m in Sources */,
 				0E21A51819E2985400BF32C2 /* Bases.m in Sources */,
 				0E07530F19E2254F00B17408 /* AppDelegate.m in Sources */,
