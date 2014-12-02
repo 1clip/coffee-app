@@ -53,7 +53,7 @@ class coffeeModelTests: XCTestCase {
         
         var participator = Participator();
         participator.id = "1234123"
-        participator.role = ParticipatorRole.Organizer.toRaw()
+        participator.role = ParticipatorRole.Organizer.rawValue;
         hangout.participators.append(participator)
         
         //NSLog(hangout.toJSONString())

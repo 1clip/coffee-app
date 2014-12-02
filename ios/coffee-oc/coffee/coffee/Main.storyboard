@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lhg-iL-8s2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lhg-iL-8s2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="1234" y="-429"/>
         </scene>
-        <!--View Controller-->
+        <!--Location-->
         <scene sceneID="JGi-md-uXw">
             <objects>
-                <viewController id="WYQ-wR-bgI" sceneMemberID="viewController">
+                <viewController id="WYQ-wR-bgI" customClass="HangoutLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W6Z-3R-lMy"/>
                         <viewControllerLayoutGuide type="bottom" id="urF-Mr-XOT"/>
@@ -151,14 +151,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IgA-lP-mbL">
-                                <rect key="frame" x="-128" y="-29" width="600" height="600"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6qy-cS-vIG">
+                                <rect key="frame" x="0.0" y="64" width="600" height="72"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1W-67-E05" userLabel="MapView" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="136" width="600" height="180"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="6qy-cS-vIG" secondAttribute="width" id="5t2-BQ-5kz"/>
+                            <constraint firstItem="A1W-67-E05" firstAttribute="top" secondItem="6qy-cS-vIG" secondAttribute="bottom" id="Dbw-iA-HsH"/>
+                            <constraint firstItem="A1W-67-E05" firstAttribute="leading" secondItem="6qy-cS-vIG" secondAttribute="leading" id="Q3m-py-dUA"/>
+                            <constraint firstItem="A1W-67-E05" firstAttribute="width" secondItem="0oW-4l-G4y" secondAttribute="width" id="Qd4-lX-gkk"/>
+                            <constraint firstItem="A1W-67-E05" firstAttribute="height" secondItem="0oW-4l-G4y" secondAttribute="height" multiplier="0.3" id="RfB-Ne-MAB"/>
+                            <constraint firstItem="W6Z-3R-lMy" firstAttribute="leading" secondItem="6qy-cS-vIG" secondAttribute="leading" id="StJ-JJ-Or4"/>
+                            <constraint firstItem="6qy-cS-vIG" firstAttribute="top" secondItem="W6Z-3R-lMy" secondAttribute="bottom" id="d0I-iV-q3A"/>
+                            <constraint firstItem="6qy-cS-vIG" firstAttribute="height" secondItem="0oW-4l-G4y" secondAttribute="height" multiplier="0.12" id="gge-jh-qX6"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mhS-gJ-gdm"/>
+                    <navigationItem key="navigationItem" title="Location" id="orT-YE-I4B"/>
+                    <connections>
+                        <outlet property="mapView" destination="A1W-67-E05" id="p58-t1-Z7b"/>
+                        <outlet property="searchBar" destination="6qy-cS-vIG" id="y27-y6-Eib"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEc-F8-s7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -360,25 +378,6 @@
             </objects>
             <point key="canvasLocation" x="-202" y="-399"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="wzQ-O6-Wgv">
-            <objects>
-                <viewController id="nRX-H2-HNa" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cSX-QS-bza"/>
-                        <viewControllerLayoutGuide type="bottom" id="VmX-7j-opg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BqC-25-Zny">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="TKz-tm-XrM"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AqS-E3-Vyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-20" y="371"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Evu-zh-Dr2">
             <objects>
@@ -391,7 +390,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="nRX-H2-HNa" kind="relationship" relationship="viewControllers" id="HoB-ck-nsf"/>
                         <segue destination="WBR-or-eZ8" kind="relationship" relationship="viewControllers" id="aRa-SK-1ud"/>
                     </connections>
                 </tabBarController>
@@ -559,6 +557,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gJI-up-2gY"/>
+        <segue reference="ar6-na-Gwf"/>
     </inferredMetricsTieBreakers>
 </document>
