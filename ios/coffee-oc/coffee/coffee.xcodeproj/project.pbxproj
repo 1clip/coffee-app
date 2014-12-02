@@ -24,6 +24,35 @@
 		0EFD8A2619E59A3F001CFEAB /* JSONModelRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD8A2519E59A3F001CFEAB /* JSONModelRequestSerializer.m */; };
 		0EFD8A2919E59A5E001CFEAB /* CoffeeAPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD8A2819E59A5E001CFEAB /* CoffeeAPIError.m */; };
 		0EFD8A2C19E59A6F001CFEAB /* CoffeeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD8A2B19E59A6F001CFEAB /* CoffeeAPI.m */; };
+		102626891A27F13600DD9081 /* accept.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626751A27F13600DD9081 /* accept.png */; };
+		1026268A1A27F13600DD9081 /* cancel-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626761A27F13600DD9081 /* cancel-22.png */; };
+		1026268B1A27F13600DD9081 /* cancel_white-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626771A27F13600DD9081 /* cancel_white-22.png */; };
+		1026268C1A27F13600DD9081 /* coffee-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626781A27F13600DD9081 /* coffee-22.png */; };
+		1026268D1A27F13600DD9081 /* dinner-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626791A27F13600DD9081 /* dinner-22.png */; };
+		1026268F1A27F13600DD9081 /* icon_chat_guide_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1026267B1A27F13600DD9081 /* icon_chat_guide_closed@2x.png */; };
+		102626901A27F13600DD9081 /* icon_lbs_28_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1026267C1A27F13600DD9081 /* icon_lbs_28_n@2x.png */; };
+		102626911A27F13600DD9081 /* icon_message_return_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1026267D1A27F13600DD9081 /* icon_message_return_gray.png */; };
+		102626921A27F13600DD9081 /* icon_my_setup_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1026267E1A27F13600DD9081 /* icon_my_setup_search@2x.png */; };
+		102626931A27F13600DD9081 /* icon_nav_reply_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1026267F1A27F13600DD9081 /* icon_nav_reply_n@2x.png */; };
+		102626941A27F13600DD9081 /* KTV-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626801A27F13600DD9081 /* KTV-22.png */; };
+		102626951A27F13600DD9081 /* movie-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626811A27F13600DD9081 /* movie-22.png */; };
+		102626961A27F13600DD9081 /* pending@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626821A27F13600DD9081 /* pending@2x.png */; };
+		102626971A27F13600DD9081 /* shopping-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626831A27F13600DD9081 /* shopping-22.png */; };
+		102626981A27F13600DD9081 /* shower-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626841A27F13600DD9081 /* shower-22.png */; };
+		102626991A27F13600DD9081 /* smile-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626851A27F13600DD9081 /* smile-22.png */; };
+		1026269A1A27F13600DD9081 /* status_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626861A27F13600DD9081 /* status_cancel.png */; };
+		1026269B1A27F13600DD9081 /* status_pending.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626871A27F13600DD9081 /* status_pending.png */; };
+		1026269C1A27F13600DD9081 /* xiaowu.sample@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 102626881A27F13600DD9081 /* xiaowu.sample@2x.png */; };
+		1043120D1A270F000046A174 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1043120C1A270F000046A174 /* Main.storyboard */; };
+		104312111A27102B0046A174 /* HangoutDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104312101A27102B0046A174 /* HangoutDetailViewController.m */; };
+		10A6F0581A2A53C000254394 /* dinner.png in Resources */ = {isa = PBXBuildFile; fileRef = 10A6F0571A2A53C000254394 /* dinner.png */; };
+		10A6F05B1A2A55AD00254394 /* UITableGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A6F05A1A2A55AD00254394 /* UITableGridViewCell.m */; };
+		10A6F05E1A2A567D00254394 /* ActivityReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A6F05D1A2A567D00254394 /* ActivityReplyView.m */; };
+		10ABCBE11A2C5ACC004F9EB5 /* NewActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10ABCBE01A2C5ACC004F9EB5 /* NewActivityViewController.m */; };
+		10ABCBE41A2D3172004F9EB5 /* ActivityCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10ABCBE31A2D3172004F9EB5 /* ActivityCollectionCell.m */; };
+		10EA65EC1A2ABFEF009A10DC /* AddHangoutCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EA65EB1A2ABFEF009A10DC /* AddHangoutCollectionCell.m */; };
+		10F15CEA1A2A9690009102CF /* HangoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F15CE91A2A9690009102CF /* HangoutViewController.m */; };
+		10F15CEE1A2A9955009102CF /* HangoutCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F15CED1A2A9955009102CF /* HangoutCollectionCell.m */; };
 		1E4DB0B9E474BD38095FDFBB /* libPods-coffee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 597921EC47B53B0F4D7162C3 /* libPods-coffee.a */; };
 		975A5BCAA7EC0864334E9D47 /* libPods-coffeeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */; };
 /* End PBXBuildFile section */
@@ -74,6 +103,43 @@
 		0EFD8A2819E59A5E001CFEAB /* CoffeeAPIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeAPIError.m; sourceTree = "<group>"; };
 		0EFD8A2A19E59A6F001CFEAB /* CoffeeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeAPI.h; sourceTree = "<group>"; };
 		0EFD8A2B19E59A6F001CFEAB /* CoffeeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeAPI.m; sourceTree = "<group>"; };
+		102626751A27F13600DD9081 /* accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accept.png; sourceTree = "<group>"; };
+		102626761A27F13600DD9081 /* cancel-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-22.png"; sourceTree = "<group>"; };
+		102626771A27F13600DD9081 /* cancel_white-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_white-22.png"; sourceTree = "<group>"; };
+		102626781A27F13600DD9081 /* coffee-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coffee-22.png"; sourceTree = "<group>"; };
+		102626791A27F13600DD9081 /* dinner-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dinner-22.png"; sourceTree = "<group>"; };
+		1026267B1A27F13600DD9081 /* icon_chat_guide_closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chat_guide_closed@2x.png"; sourceTree = "<group>"; };
+		1026267C1A27F13600DD9081 /* icon_lbs_28_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_lbs_28_n@2x.png"; sourceTree = "<group>"; };
+		1026267D1A27F13600DD9081 /* icon_message_return_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_message_return_gray.png; sourceTree = "<group>"; };
+		1026267E1A27F13600DD9081 /* icon_my_setup_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_my_setup_search@2x.png"; sourceTree = "<group>"; };
+		1026267F1A27F13600DD9081 /* icon_nav_reply_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_nav_reply_n@2x.png"; sourceTree = "<group>"; };
+		102626801A27F13600DD9081 /* KTV-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KTV-22.png"; sourceTree = "<group>"; };
+		102626811A27F13600DD9081 /* movie-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "movie-22.png"; sourceTree = "<group>"; };
+		102626821A27F13600DD9081 /* pending@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pending@2x.png"; sourceTree = "<group>"; };
+		102626831A27F13600DD9081 /* shopping-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-22.png"; sourceTree = "<group>"; };
+		102626841A27F13600DD9081 /* shower-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shower-22.png"; sourceTree = "<group>"; };
+		102626851A27F13600DD9081 /* smile-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile-22.png"; sourceTree = "<group>"; };
+		102626861A27F13600DD9081 /* status_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_cancel.png; sourceTree = "<group>"; };
+		102626871A27F13600DD9081 /* status_pending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_pending.png; sourceTree = "<group>"; };
+		102626881A27F13600DD9081 /* xiaowu.sample@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xiaowu.sample@2x.png"; sourceTree = "<group>"; };
+		1043120C1A270F000046A174 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1043120F1A27102B0046A174 /* HangoutDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HangoutDetailViewController.h; path = ViewControllers/HangoutDetailViewController.h; sourceTree = "<group>"; };
+		104312101A27102B0046A174 /* HangoutDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HangoutDetailViewController.m; path = ViewControllers/HangoutDetailViewController.m; sourceTree = "<group>"; };
+		10A6F0571A2A53C000254394 /* dinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dinner.png; sourceTree = "<group>"; };
+		10A6F0591A2A559100254394 /* UITableGridViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableGridViewCell.h; sourceTree = "<group>"; };
+		10A6F05A1A2A55AD00254394 /* UITableGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableGridViewCell.m; sourceTree = "<group>"; };
+		10A6F05C1A2A567D00254394 /* ActivityReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReplyView.h; sourceTree = "<group>"; };
+		10A6F05D1A2A567D00254394 /* ActivityReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReplyView.m; sourceTree = "<group>"; };
+		10ABCBDF1A2C5ACC004F9EB5 /* NewActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewActivityViewController.h; sourceTree = "<group>"; };
+		10ABCBE01A2C5ACC004F9EB5 /* NewActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewActivityViewController.m; sourceTree = "<group>"; };
+		10ABCBE21A2D3172004F9EB5 /* ActivityCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCollectionCell.h; sourceTree = "<group>"; };
+		10ABCBE31A2D3172004F9EB5 /* ActivityCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCollectionCell.m; sourceTree = "<group>"; };
+		10EA65EA1A2ABFEF009A10DC /* AddHangoutCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHangoutCollectionCell.h; sourceTree = "<group>"; };
+		10EA65EB1A2ABFEF009A10DC /* AddHangoutCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHangoutCollectionCell.m; sourceTree = "<group>"; };
+		10F15CE81A2A967B009102CF /* HangoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HangoutViewController.h; sourceTree = "<group>"; };
+		10F15CE91A2A9690009102CF /* HangoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangoutViewController.m; sourceTree = "<group>"; };
+		10F15CEC1A2A9955009102CF /* HangoutCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangoutCollectionCell.h; sourceTree = "<group>"; };
+		10F15CED1A2A9955009102CF /* HangoutCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangoutCollectionCell.m; sourceTree = "<group>"; };
 		336ACB363929E815CA0DDFD4 /* Pods-coffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-coffeeTests/Pods-coffeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffeeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597921EC47B53B0F4D7162C3 /* libPods-coffee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffee.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,12 +192,15 @@
 			isa = PBXGroup;
 			children = (
 				0ED8E3CE1A286C320072E833 /* UIKit */,
+				102626741A27F13600DD9081 /* Resource */,
+				1043120E1A270F070046A174 /* ViewControllers */,
 				0EFD8A2319E59A3F001CFEAB /* CoffeeAPI */,
 				0E21A50519E22A5A00BF32C2 /* DataModels */,
 				0E07530D19E2254F00B17408 /* AppDelegate.h */,
 				0E07530E19E2254F00B17408 /* AppDelegate.m */,
 				0E07531619E2254F00B17408 /* Images.xcassets */,
 				0E07530919E2254F00B17408 /* Supporting Files */,
+				1043120C1A270F000046A174 /* Main.storyboard */,
 			);
 			path = coffee;
 			sourceTree = "<group>";
@@ -185,8 +254,18 @@
 		0ED8E3CE1A286C320072E833 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				10A6F05C1A2A567D00254394 /* ActivityReplyView.h */,
+				10A6F05D1A2A567D00254394 /* ActivityReplyView.m */,
 				0ED8E3CF1A286C320072E833 /* CFAvatarView.h */,
 				0ED8E3D01A286C320072E833 /* CFAvatarView.m */,
+				10A6F0591A2A559100254394 /* UITableGridViewCell.h */,
+				10A6F05A1A2A55AD00254394 /* UITableGridViewCell.m */,
+				10F15CEC1A2A9955009102CF /* HangoutCollectionCell.h */,
+				10F15CED1A2A9955009102CF /* HangoutCollectionCell.m */,
+				10EA65EA1A2ABFEF009A10DC /* AddHangoutCollectionCell.h */,
+				10EA65EB1A2ABFEF009A10DC /* AddHangoutCollectionCell.m */,
+				10ABCBE21A2D3172004F9EB5 /* ActivityCollectionCell.h */,
+				10ABCBE31A2D3172004F9EB5 /* ActivityCollectionCell.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -213,6 +292,46 @@
 				0EFD8A2B19E59A6F001CFEAB /* CoffeeAPI.m */,
 			);
 			path = CoffeeAPI;
+			sourceTree = "<group>";
+		};
+		102626741A27F13600DD9081 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				10A6F0571A2A53C000254394 /* dinner.png */,
+				102626751A27F13600DD9081 /* accept.png */,
+				102626761A27F13600DD9081 /* cancel-22.png */,
+				102626771A27F13600DD9081 /* cancel_white-22.png */,
+				102626781A27F13600DD9081 /* coffee-22.png */,
+				102626791A27F13600DD9081 /* dinner-22.png */,
+				1026267B1A27F13600DD9081 /* icon_chat_guide_closed@2x.png */,
+				1026267C1A27F13600DD9081 /* icon_lbs_28_n@2x.png */,
+				1026267D1A27F13600DD9081 /* icon_message_return_gray.png */,
+				1026267E1A27F13600DD9081 /* icon_my_setup_search@2x.png */,
+				1026267F1A27F13600DD9081 /* icon_nav_reply_n@2x.png */,
+				102626801A27F13600DD9081 /* KTV-22.png */,
+				102626811A27F13600DD9081 /* movie-22.png */,
+				102626821A27F13600DD9081 /* pending@2x.png */,
+				102626831A27F13600DD9081 /* shopping-22.png */,
+				102626841A27F13600DD9081 /* shower-22.png */,
+				102626851A27F13600DD9081 /* smile-22.png */,
+				102626861A27F13600DD9081 /* status_cancel.png */,
+				102626871A27F13600DD9081 /* status_pending.png */,
+				102626881A27F13600DD9081 /* xiaowu.sample@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		1043120E1A270F070046A174 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1043120F1A27102B0046A174 /* HangoutDetailViewController.h */,
+				104312101A27102B0046A174 /* HangoutDetailViewController.m */,
+				10F15CE81A2A967B009102CF /* HangoutViewController.h */,
+				10F15CE91A2A9690009102CF /* HangoutViewController.m */,
+				10ABCBDF1A2C5ACC004F9EB5 /* NewActivityViewController.h */,
+				10ABCBE01A2C5ACC004F9EB5 /* NewActivityViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		95866A0C9ADE15C8E2FBB201 /* Frameworks */ = {
@@ -319,8 +438,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				102626961A27F13600DD9081 /* pending@2x.png in Resources */,
+				102626891A27F13600DD9081 /* accept.png in Resources */,
 				0E07531719E2254F00B17408 /* Images.xcassets in Resources */,
 				0ED8E3CD1A286BDF0072E833 /* Default-568h@2x.png in Resources */,
+				102626981A27F13600DD9081 /* shower-22.png in Resources */,
+				10A6F0581A2A53C000254394 /* dinner.png in Resources */,
+				1043120D1A270F000046A174 /* Main.storyboard in Resources */,
+				1026268B1A27F13600DD9081 /* cancel_white-22.png in Resources */,
+				102626911A27F13600DD9081 /* icon_message_return_gray.png in Resources */,
+				1026268F1A27F13600DD9081 /* icon_chat_guide_closed@2x.png in Resources */,
+				102626941A27F13600DD9081 /* KTV-22.png in Resources */,
+				1026269C1A27F13600DD9081 /* xiaowu.sample@2x.png in Resources */,
+				102626931A27F13600DD9081 /* icon_nav_reply_n@2x.png in Resources */,
+				102626991A27F13600DD9081 /* smile-22.png in Resources */,
+				1026269B1A27F13600DD9081 /* status_pending.png in Resources */,
+				102626901A27F13600DD9081 /* icon_lbs_28_n@2x.png in Resources */,
+				1026269A1A27F13600DD9081 /* status_cancel.png in Resources */,
+				102626951A27F13600DD9081 /* movie-22.png in Resources */,
+				1026268A1A27F13600DD9081 /* cancel-22.png in Resources */,
+				1026268D1A27F13600DD9081 /* dinner-22.png in Resources */,
+				1026268C1A27F13600DD9081 /* coffee-22.png in Resources */,
+				102626921A27F13600DD9081 /* icon_my_setup_search@2x.png in Resources */,
+				102626971A27F13600DD9081 /* shopping-22.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,11 +546,19 @@
 				0EFD8A2C19E59A6F001CFEAB /* CoffeeAPI.m in Sources */,
 				0E21A51A19E2985400BF32C2 /* User.m in Sources */,
 				0ED8E3D11A286C320072E833 /* CFAvatarView.m in Sources */,
+				10ABCBE41A2D3172004F9EB5 /* ActivityCollectionCell.m in Sources */,
+				10F15CEA1A2A9690009102CF /* HangoutViewController.m in Sources */,
+				104312111A27102B0046A174 /* HangoutDetailViewController.m in Sources */,
 				0EE7CC7C19E2F3580053BA92 /* Group.m in Sources */,
 				0E21A51819E2985400BF32C2 /* Bases.m in Sources */,
+				10A6F05E1A2A567D00254394 /* ActivityReplyView.m in Sources */,
+				10EA65EC1A2ABFEF009A10DC /* AddHangoutCollectionCell.m in Sources */,
 				0E07530F19E2254F00B17408 /* AppDelegate.m in Sources */,
 				0EFD8A2619E59A3F001CFEAB /* JSONModelRequestSerializer.m in Sources */,
 				0E21A51919E2985400BF32C2 /* Hangout.m in Sources */,
+				10F15CEE1A2A9955009102CF /* HangoutCollectionCell.m in Sources */,
+				10A6F05B1A2A55AD00254394 /* UITableGridViewCell.m in Sources */,
+				10ABCBE11A2C5ACC004F9EB5 /* NewActivityViewController.m in Sources */,
 				0E07530C19E2254F00B17408 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

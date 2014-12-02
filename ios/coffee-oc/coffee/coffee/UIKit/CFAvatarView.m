@@ -215,7 +215,7 @@ badgeLayer = _badgeLayer;
 - (CALayer*)contentLayer {
     if (!_contentLayer) {
         // borrow content layer initialization for root layer
-        self.layer.backgroundColor = [UIColor clearColor].CGColor;
+        //self.layer.backgroundColor = [UIColor clearColor].CGColor;
         self.layer.cornerRadius = self.frame.size.width * 0.5;
         
         _contentLayer = [CALayer layer];
