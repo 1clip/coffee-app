@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LocationTableCell.h"
+#import "BMapKit.h"
+#import "BMKPoiSearch.h"
 #import <GoogleMaps/GoogleMaps.h>
-@interface HangoutLocationViewController : UIViewController
+#import "Location.h"
+@interface HangoutLocationViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, BMKMapViewDelegate,BMKPoiSearchDelegate, UISearchBarDelegate>
+{
+    BMKPoiSearch* _poiSearch;
+    SearchLocation *searchLocation;
+}
 
-@property(nonatomic, strong) IBOutlet GMSMapView *mapView;
+@property(nonatomic, strong) IBOutlet BMKMapView *mapView;
 @property(nonatomic, strong) IBOutlet UISearchBar *searchBar;
-
-
+@property(nonatomic, strong) IBOutlet UITableView* tableView;
 @end

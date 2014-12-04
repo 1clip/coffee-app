@@ -10,7 +10,6 @@
 
 @interface NewActivityViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 {
-    UIImageView *selectedActivity;
 }
 
 @property(nonatomic, strong) IBOutlet UIImageView *selectedActivity;

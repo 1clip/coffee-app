@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InvationTableCellTableViewCell : UITableViewCell
+@interface InvationTableCell : UITableViewCell
 
 @end

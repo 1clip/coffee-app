@@ -42,7 +42,7 @@
         static NSString *collectionCellID = @"HangoutCollectionCell";
         HangoutCollectionCell *cell = (HangoutCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellID forIndexPath:indexPath];
     
-        [cell.avatorImage setImageWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"xiaowu.sample@2x" ofType:@"png"]]];
+        [cell.avatorImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
         [self setData: indexPath viewForCollection:cell];
         return cell;
     }

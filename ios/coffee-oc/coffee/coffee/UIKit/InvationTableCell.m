@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 1clip. All rights reserved.
 //
 
-#import "InvationTableCellTableViewCell.h"
+#import "InvationTableCell.h"
 
-@implementation InvationTableCellTableViewCell
+@implementation InvationTableCell
 
 - (void)awakeFromNib {
     // Initialization code

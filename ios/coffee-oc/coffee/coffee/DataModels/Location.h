@@ -7,7 +7,23 @@
 //
 
 #import "Bases.h"
+#import "BMKPoiSearchType.h"
 
-@interface Location : IdObject
+@protocol Location;
+@interface Location:NSObject
+
+@property (strong, nonatomic) NSString<Optional>* title;
+
+@property (assign, nonatomic) CLLocationCoordinate2D coordinate;
+
+@property (retain, nonatomic) NSString* address;
+
+@property (strong, nonatomic) NSString<Optional>* imageName;
+
+@end
+
+@interface SearchLocation : IdObject
+
+@property (strong, nonatomic) NSMutableArray<Location, Optional>* locations;
 
 @end

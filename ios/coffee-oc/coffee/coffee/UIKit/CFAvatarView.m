@@ -74,6 +74,17 @@ static inline NSString * AFImageCacheKeyFromURLRequest(NSURLRequest *request) {
 contentLayer = _contentLayer,
 badgeLayer = _badgeLayer;
 
+#pragma mark - Init
+- (instancetype) initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.layer.cornerRadius = frame.size.width * 0.5;
+    }
+    
+    return self;
+}
+
 #pragma mark - Image from Network
 
 - (void)setImageWithURL:(NSURL *)url
@@ -105,13 +116,14 @@ badgeLayer = _badgeLayer;
              badgeImage:(UIImage *)badgeImage
 {
     self.badgeImage = badgeImage;
+    [self refreshSize];
     
     NSMutableURLRequest *urlRequest = nil;
     if (url) {
         urlRequest = [NSMutableURLRequest requestWithURL:url];
         [urlRequest addValue:@"image/*" forHTTPHeaderField:@"Accept"];
     }
-    
+
     [self cancelImageRequestOperation];
     
     UIImage *cachedImage =
@@ -123,7 +135,7 @@ badgeLayer = _badgeLayer;
         self.image = cachedImage;
         self.af_imageRequestOperation = nil;
 
-    } else {
+    } else if (urlRequest) {
         if (placeholderImage) {
             self.image = placeholderImage;
         }
@@ -189,6 +201,7 @@ badgeLayer = _badgeLayer;
     if (_image) {
         self.contentLayer.hidden = NO;
         self.contentLayer.contents = (id)_image.CGImage;
+        self.contentLayer.masksToBounds = YES;
     } else {
         self.contentLayer.hidden = YES;
     }
@@ -210,23 +223,37 @@ badgeLayer = _badgeLayer;
     }
 }
 
+#pragma mark - 
+- (void) refreshSize
+{
+    CGFloat visibleWidth = MIN(self.frame.size.width, self.frame.size.height);
+    self.layer.cornerRadius = visibleWidth * 0.5;
+    self.contentLayer.frame = CGRectMake(0, 0, visibleWidth, visibleWidth);
+    self.contentLayer.masksToBounds = YES;
+    CGFloat badgeWidth = visibleWidth / 4;
+    
+    self.badgeLayer.frame = CGRectMake(visibleWidth - badgeWidth
+                                       , visibleWidth - badgeWidth
+                                       , badgeWidth
+                                       , badgeWidth);
+    self.badgeLayer.cornerRadius = badgeWidth * 0.5;
+    self.badgeLayer.masksToBounds = YES;
+}
+
 #pragma mark - Private Member Getters
 
 - (CALayer*)contentLayer {
     if (!_contentLayer) {
         // borrow content layer initialization for root layer
         //self.layer.backgroundColor = [UIColor clearColor].CGColor;
-        self.layer.cornerRadius = self.frame.size.width * 0.5;
         
         _contentLayer = [CALayer layer];
-        CGFloat visibleWidth = MIN(self.frame.size.width, self.frame.size.height);
-        _contentLayer.frame = CGRectMake(0, 0, visibleWidth, visibleWidth);
-        _contentLayer.cornerRadius = visibleWidth * 0.5;
         _contentLayer.borderColor = self.borderColor.CGColor;
         _contentLayer.borderWidth = self.borderWidth;
         _contentLayer.masksToBounds = YES;
         [self.layer addSublayer:_contentLayer];
     }
+    
     return _contentLayer;
 }
 
@@ -235,15 +262,7 @@ badgeLayer = _badgeLayer;
         // force to create content layer first;
         [self contentLayer];
         
-        CGFloat visibleWidth = MIN(self.frame.size.width, self.frame.size.height);
-        CGFloat badgeWidth = visibleWidth / 4;
-        
         _badgeLayer = [CALayer layer];
-        _badgeLayer.frame = CGRectMake(visibleWidth - badgeWidth
-                                       , visibleWidth - badgeWidth
-                                       , badgeWidth
-                                       , badgeWidth);
-        _badgeLayer.cornerRadius = badgeWidth * 0.5;
         _badgeLayer.masksToBounds = YES;
         
         [self.layer addSublayer:_badgeLayer];

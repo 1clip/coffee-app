@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InvationTableCell.h"
+#import "SwipeView.h"
 
-@interface HangoutInvationViewController : UIViewController
+@interface HangoutInvationViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, SwipeViewDelegate, SwipeViewDataSource>
+
+
+@property(nonatomic, strong) IBOutlet UISearchBar *searchBar;
+@property(nonatomic, strong) IBOutlet UITableView* tableView;
+
 
 @end

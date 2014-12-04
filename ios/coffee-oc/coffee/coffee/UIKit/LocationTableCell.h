@@ -10,4 +10,8 @@
 
 @interface LocationTableCell : UITableViewCell
 
+@property(nonatomic, strong) IBOutlet UIImageView *locationImage;
+@property(nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property(nonatomic, strong) IBOutlet UILabel *addressLabel;
+
 @end

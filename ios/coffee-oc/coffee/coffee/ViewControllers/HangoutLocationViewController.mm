@@ -7,6 +7,7 @@
 //
 
 #import "HangoutLocationViewController.h"
+#import "Location.h"
 
 @interface HangoutLocationViewController ()
 
@@ -16,36 +17,225 @@
 @implementation HangoutLocationViewController
 
 @synthesize searchBar;
-@synthesize mapView;
+@synthesize mapView = _mapView;
+@synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
-    //mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView.camera = camera;
-    mapView.myLocationEnabled = YES;
-    //self.view = mapView;
     
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = mapView;
+    searchLocation = [[SearchLocation alloc] init];
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
+    {
+        //        self.edgesForExtendedLayout=UIRectEdgeNone;
+        self.navigationController.navigationBar.translucent = NO;
+    }
+    
+    _poiSearch = [[BMKPoiSearch alloc] init];
+    
+    _mapView.isSelectedAnnotationViewFront = YES;
+    
+    [_mapView setZoomLevel:13];
     // Do any additional setup after loading the view.
     
-    [searchBar setText:@"hello"];
-    [searchBar setTintColor:[UIColor redColor]];
-    [searchBar setBackgroundColor:[UIColor colorWithRed:242.0/255.0 green:242.0/255.0  blue:242.0/255.0  alpha:1.0]];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [_mapView viewWillAppear];
+    CLLocationCoordinate2D corrdinate;
+    corrdinate.latitude = 31.24;
+    corrdinate.longitude = 121.43;
+    _mapView.centerCoordinate = corrdinate;
+    _mapView.delegate = self;
+    _poiSearch.delegate = self;
+
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    _mapView.delegate = self;
+    _poiSearch.delegate = self;
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [_mapView viewWillDisappear];
+    _mapView.delegate = nil;
+    _poiSearch.delegate = nil;
+}
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void) initTableView{
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorColor = [UIColor lightGrayColor];
+    
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return searchLocation.locations.count;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifier = @"LocationCell";
+    LocationTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell) {
+        Location *item = (Location *)searchLocation.locations[indexPath.row];
+        [cell.locationImage setImage:[UIImage imageNamed:@"xsq"]];
+        [cell.titleLabel setText: item.title];
+        [cell.addressLabel setText: item.address];
+    }
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    Location *item = (Location *)searchLocation.locations[indexPath.row];
+    _mapView.centerCoordinate = item.coordinate;
+    [_mapView setZoomLevel:15];
+}
+
+//Baidu map view
+
+#pragma mark -
+#pragma mark implement BMKMapViewDelegate
+
+/**
+ *根据anntation生成对应的View
+ *@param mapView 地图View
+ *@param annotation 指定的标注
+ *@return 生成的标注View
+ */
+- (BMKAnnotationView *)mapView:(BMKMapView *)view viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    // 生成重用标示identifier
+    NSString *AnnotationViewID = @"xidanMark";
+    
+    // 检查是否有重用的缓存
+    BMKAnnotationView* annotationView = [view dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
+    
+    // 缓存没有命中，自己构造一个，一般首次添加annotation代码会运行到此处
+    if (annotationView == nil) {
+        annotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
+        ((BMKPinAnnotationView*)annotationView).pinColor = BMKPinAnnotationColorRed;
+        // 设置重天上掉下的效果(annotation)
+        ((BMKPinAnnotationView*)annotationView).animatesDrop = YES;
+    }
+    
+    
+    // 设置位置
+    annotationView.centerOffset = CGPointMake(0, -(annotationView.frame.size.height * 0.5));
+    annotationView.annotation = annotation;
+    // 单击弹出泡泡，弹出泡泡前提annotation必须实现title属性
+    annotationView.canShowCallout = YES;
+    // 设置是否可以拖拽
+    annotationView.draggable = NO;
+    
+    return annotationView;
+}
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
+    [mapView bringSubviewToFront:view];
+    [mapView setNeedsDisplay];
+}
+- (void)mapView:(BMKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    NSLog(@"didAddAnnotationViews");
+}
+
+#pragma mark -
+#pragma mark implement BMKSearchDelegate
+- (void)onGetPoiResult:(BMKPoiSearch *)searcher result:(BMKPoiResult*)result errorCode:(BMKSearchErrorCode)error
+{
+    [searchLocation.locations removeAllObjects];
+    // 清楚屏幕中所有的annotation
+    NSArray* array = [NSArray arrayWithArray:_mapView.annotations];
+    
+    [_mapView removeAnnotations:array];
+    
+    if (error == BMK_SEARCH_NO_ERROR) {
+        for (int i = 0; i < result.poiInfoList.count; i++) {
+            BMKPoiInfo* poi = [result.poiInfoList objectAtIndex:i];
+            BMKPointAnnotation* item = [[BMKPointAnnotation alloc]init];
+            item.coordinate = poi.pt;
+            item.title = poi.name;
+            [_mapView addAnnotation:item];
+            Location *location = [[Location alloc] init];
+            location.title = item.title;
+            location.coordinate = item.coordinate;
+            location.address = poi.address;
+            [searchLocation.locations addObject:location];
+            if(i == 0)
+            {
+                //将第一个点的坐标移到屏幕中央
+                _mapView.centerCoordinate = poi.pt;
+                [_mapView setZoomLevel:13];
+            }
+        }
+    } else if (error == BMK_SEARCH_AMBIGUOUS_ROURE_ADDR){
+        NSLog(@"起始点有歧义");
+    } else {
+        // 各种情况的判断。。。
+    }
+    
+    [tableView reloadData];
+}
+
+/*搜索按钮*/
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    
+    [self.searchBar resignFirstResponder];
+
+}
+
+/*键盘搜索按钮*/
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self.searchBar resignFirstResponder];
+    [self doSearch:self.searchBar];
+}
+
+/*搜索*/
+- (void)doSearch:(UISearchBar *)searchBar{
+    NSString *keyword = self.searchBar.text;
+    
+    BMKCitySearchOption *citySearchOption = [[BMKCitySearchOption alloc]init];
+    citySearchOption.pageIndex = 0;
+    citySearchOption.pageCapacity = 10;
+    citySearchOption.city= @"上海";
+    citySearchOption.keyword = keyword;
+    BOOL flag = [_poiSearch poiSearchInCity:citySearchOption];
+    if(flag)
+    {
+        NSLog(@"城市内检索发送成功");
+    }
+    else
+    {
+        NSLog(@"城市内检索发送失败");
+    }
+}
+
+- (void)lostFocus: (UITapGestureRecognizer *)sender
+{
+    [self.searchBar resignFirstResponder];
 }
 
 /*

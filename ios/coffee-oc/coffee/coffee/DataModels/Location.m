@@ -11,3 +11,15 @@
 @implementation Location
 
 @end
+
+@implementation SearchLocation
+
+-(NSMutableArray<Location, Optional>*) locations {
+    if (!_locations) {
+        _locations = (NSMutableArray<Location, Optional>*)[NSMutableArray array];
+    }
+    
+    return _locations;
+}
+
+@end

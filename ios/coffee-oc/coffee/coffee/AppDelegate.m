@@ -12,11 +12,19 @@
 
 @end
 
+BMKMapManager *_mapManager;
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyCO7EtOLsVyIBdOJDL-TyICCJy2oFc4KEU"];
+    
+    _mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [_mapManager start:@"N6rARNh2I4fDABGxIXO3GG2g" generalDelegate:self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    
     return YES;
 }
 

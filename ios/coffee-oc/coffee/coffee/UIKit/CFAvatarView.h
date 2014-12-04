@@ -13,6 +13,8 @@
 @property (nonatomic, strong) UIColor *borderColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) CGFloat borderWidth UI_APPEARANCE_SELECTOR;
 
+- (void)refreshSize;
+
 
 - (void)setImageWithURL:(NSURL *)url;
 

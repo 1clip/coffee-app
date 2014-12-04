@@ -29,14 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
-    [self.activityImage setBackgroundColor:[UIColor colorWithRed:63.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0]];
-
-    [self.activityImage setImageWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"dinner" ofType:@"png"]]];
     
     [self._activityDetailView setBackgroundColor:[UIColor colorWithRed:70.0/255.0 green:206.0/255.0 blue:180.0/255.0 alpha:1.0]];
     
-    
-    [_detailView setBackgroundColor:[UIColor colorWithRed:63.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0]];
     _locatonLabel.text = @"Time: 7:00pm Today \n Restaurant: Yun Tun";
     _locatonLabel.textColor = [UIColor whiteColor];
     _locatonLabel.backgroundColor = [UIColor clearColor];
@@ -46,7 +41,7 @@
     
     [_lbsView setImage:[UIImage imageNamed:@"icon_lbs_28_n"]];
     
-    [_avatorImageView setImageWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"xiaowu.sample@2x" ofType:@"png"]]];
+    [_avatorImageView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
     [_avatorImageView setBorderWidth:2.0];
     UIColor *borderColor = [UIColor colorWithRed:128.0/255.0 green:223.0/255.0 blue:209.0/255.0 alpha:1.0];
     [_avatorImageView setBorderColor:borderColor];
@@ -69,12 +64,23 @@
 
 }
 
+- (void)viewDidLayoutSubviews {
+    [self.activityImage setBackgroundColor:[UIColor colorWithRed:63.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0]];
+    [self.activityImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"dinner"]];
+}
+
+-(void)viewWillAppear:(BOOL)animated {//    [self.activityImage setImageWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"dinner" ofType:@"png"]]];
+    
+
+}
+
+
 -(void)viewDidAppear:(BOOL)animated{
+
     
     _detailView.layer.masksToBounds = YES;
     _detailView.layer.cornerRadius = _detailView.frame.size.height / 2.0;
-    
-    self.statusImageView.hidden = YES;
+    [_detailView setBackgroundColor:[UIColor colorWithRed:63.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0]];
     
 }
 
@@ -150,7 +156,6 @@
         //control events are bound to view controller in nib file
         //note that it is only safe to use the reusingView if we return the same nib for each
         //item view, if different items have different contents, ignore the reusingView value
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"xiaowu.sample@2x" ofType:@"png"];
         CGFloat height = self._acceptActionButtonView.frame.size.height * 1.1;
         view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, height + 15.0, self.swipeView.frame.size.height)];
         [view setBackgroundColor:[UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0]];
@@ -158,7 +163,7 @@
         //[view setBackgroundColor:[UIColor redColor]];
         CFAvatarView *avator = [[CFAvatarView alloc] initWithFrame:CGRectMake(5.0, (self.swipeView.frame.size.height - height) / 2, height, height)];
         UIColor *bg = [UIColor whiteColor];
-        [avator setImageWithURL:[NSURL fileURLWithPath:path] placeholderImage:nil badgeImage:[UIImage imageNamed:@"accept"]];
+        [avator setImageWithURL: nil placeholderImage:[UIImage imageNamed:@"xiaowu"] badgeImage:[UIImage imageNamed:@"accept"]];
         [avator setBorderColor:bg];
         [avator setBorderWidth:2.0];
         [view addSubview:avator];

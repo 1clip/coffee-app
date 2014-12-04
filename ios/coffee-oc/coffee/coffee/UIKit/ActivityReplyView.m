@@ -20,12 +20,10 @@
     return self;
 }
 
-- (void) initUI{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"xiaowu.sample@2x" ofType:@"png"];
-    CGFloat height = 30;
+- (void) initUI{    CGFloat height = 30;
     self.phoneImage = [[CFAvatarView alloc] initWithFrame:CGRectMake(0, 3, height, height)];
     UIColor *bg = [UIColor whiteColor];
-    [self.phoneImage setImageWithURL:[NSURL fileURLWithPath:path]];
+    [self.phoneImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
     [self.phoneImage setBorderColor:bg];
     [self.phoneImage setBorderWidth:2.0];
     
