@@ -70,6 +70,10 @@
 		0EDF7B5C19E522F300C4E695 /* TestDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF7B5B19E522F300C4E695 /* TestDataGenerator.m */; };
 		1062BDBF1A2E24EA00C102CD /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1062BDBE1A2E24EA00C102CD /* mapapi.bundle */; };
 		1062BDC31A2E2B3C00C102CD /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1062BDC21A2E2B3C00C102CD /* libbaidumapapi.a */; };
+		10838FD31A31C19100913979 /* HangoutV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10838FD21A31C19100913979 /* HangoutV2ViewController.m */; };
+		10838FD61A31CB9B00913979 /* HangoutV2CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10838FD51A31CB9B00913979 /* HangoutV2CollectionViewCell.m */; };
+		10838FD91A31DC5D00913979 /* status_accept2.png in Resources */ = {isa = PBXBuildFile; fileRef = 10838FD71A31DC5D00913979 /* status_accept2.png */; };
+		10838FDA1A31DC5D00913979 /* status_cancel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 10838FD81A31DC5D00913979 /* status_cancel2.png */; };
 		10A9341C1A2F50FB00B5323F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A9341B1A2F50FB00B5323F /* Location.m */; };
 		10A9341F1A2F778000B5323F /* HangoutInvationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A9341E1A2F778000B5323F /* HangoutInvationViewController.m */; };
 		10A934221A2F77E500B5323F /* InvationTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A934211A2F77E500B5323F /* InvationTableCell.m */; };
@@ -77,6 +81,10 @@
 		10ABCBE91A2E1801004F9EB5 /* xsq.png in Resources */ = {isa = PBXBuildFile; fileRef = 10ABCBE81A2E1801004F9EB5 /* xsq.png */; };
 		10B95B261A302A3D004794CD /* xiaowu.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B95B251A302A3D004794CD /* xiaowu.png */; };
 		10B95B291A306345004794CD /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B95B281A306345004794CD /* Constants.m */; };
+		10FEA93B1A31FBB2001762B3 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FEA93A1A31FBB2001762B3 /* add.png */; };
+		10FEA93E1A321149001762B3 /* HangoutViewControllerV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FEA93D1A321149001762B3 /* HangoutViewControllerV2.m */; };
+		10FEA9411A3212F1001762B3 /* HangoutSWTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FEA9401A3212F1001762B3 /* HangoutSWTableCell.m */; };
+		10FEA9431A3223FF001762B3 /* rightAccept.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FEA9421A3223FF001762B3 /* rightAccept.png */; };
 		1E4DB0B9E474BD38095FDFBB /* libPods-coffee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 597921EC47B53B0F4D7162C3 /* libPods-coffee.a */; };
 		975A5BCAA7EC0864334E9D47 /* libPods-coffeeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */; };
 /* End PBXBuildFile section */
@@ -242,6 +250,12 @@
 		1062BDBD1A2E248900C102CD /* BMKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKVersion.h; sourceTree = "<group>"; };
 		1062BDBE1A2E24EA00C102CD /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = BaiduMap_IOSSDK_v2.5.0_Lib/mapapi.bundle; sourceTree = "<group>"; };
 		1062BDC21A2E2B3C00C102CD /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumapapi.a; path = "BaiduMap_IOSSDK_v2.5.0_Lib/Release-iphoneos/libbaidumapapi.a"; sourceTree = "<group>"; };
+		10838FD11A31C19100913979 /* HangoutV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangoutV2ViewController.h; sourceTree = "<group>"; };
+		10838FD21A31C19100913979 /* HangoutV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangoutV2ViewController.m; sourceTree = "<group>"; };
+		10838FD41A31CB9B00913979 /* HangoutV2CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangoutV2CollectionViewCell.h; sourceTree = "<group>"; };
+		10838FD51A31CB9B00913979 /* HangoutV2CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangoutV2CollectionViewCell.m; sourceTree = "<group>"; };
+		10838FD71A31DC5D00913979 /* status_accept2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_accept2.png; sourceTree = "<group>"; };
+		10838FD81A31DC5D00913979 /* status_cancel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_cancel2.png; sourceTree = "<group>"; };
 		10A9341A1A2F50FB00B5323F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		10A9341B1A2F50FB00B5323F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		10A9341D1A2F778000B5323F /* HangoutInvationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangoutInvationViewController.h; sourceTree = "<group>"; };
@@ -254,6 +268,12 @@
 		10B95B251A302A3D004794CD /* xiaowu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaowu.png; sourceTree = "<group>"; };
 		10B95B271A306345004794CD /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		10B95B281A306345004794CD /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		10FEA93A1A31FBB2001762B3 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		10FEA93C1A321149001762B3 /* HangoutViewControllerV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangoutViewControllerV2.h; sourceTree = "<group>"; };
+		10FEA93D1A321149001762B3 /* HangoutViewControllerV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangoutViewControllerV2.m; sourceTree = "<group>"; };
+		10FEA93F1A3212F1001762B3 /* HangoutSWTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangoutSWTableCell.h; sourceTree = "<group>"; };
+		10FEA9401A3212F1001762B3 /* HangoutSWTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangoutSWTableCell.m; sourceTree = "<group>"; };
+		10FEA9421A3223FF001762B3 /* rightAccept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightAccept.png; sourceTree = "<group>"; };
 		336ACB363929E815CA0DDFD4 /* Pods-coffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-coffeeTests/Pods-coffeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffeeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597921EC47B53B0F4D7162C3 /* libPods-coffee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffee.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,6 +411,10 @@
 		0EAB1ADB1A2DA4D3008A0AE2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				10FEA9421A3223FF001762B3 /* rightAccept.png */,
+				10FEA93A1A31FBB2001762B3 /* add.png */,
+				10838FD71A31DC5D00913979 /* status_accept2.png */,
+				10838FD81A31DC5D00913979 /* status_cancel2.png */,
 				10B95B251A302A3D004794CD /* xiaowu.png */,
 				10ABCBE81A2E1801004F9EB5 /* xsq.png */,
 				0EAB1ADC1A2DA4D3008A0AE2 /* accept.png */,
@@ -437,6 +461,10 @@
 				10A934211A2F77E500B5323F /* InvationTableCell.m */,
 				10B95B271A306345004794CD /* Constants.h */,
 				10B95B281A306345004794CD /* Constants.m */,
+				10838FD41A31CB9B00913979 /* HangoutV2CollectionViewCell.h */,
+				10838FD51A31CB9B00913979 /* HangoutV2CollectionViewCell.m */,
+				10FEA93F1A3212F1001762B3 /* HangoutSWTableCell.h */,
+				10FEA9401A3212F1001762B3 /* HangoutSWTableCell.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -454,6 +482,10 @@
 				0EAB1B4A1A2DA8C8008A0AE2 /* HangoutLocationViewController.mm */,
 				10A9341D1A2F778000B5323F /* HangoutInvationViewController.h */,
 				10A9341E1A2F778000B5323F /* HangoutInvationViewController.m */,
+				10838FD11A31C19100913979 /* HangoutV2ViewController.h */,
+				10838FD21A31C19100913979 /* HangoutV2ViewController.m */,
+				10FEA93C1A321149001762B3 /* HangoutViewControllerV2.h */,
+				10FEA93D1A321149001762B3 /* HangoutViewControllerV2.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -669,9 +701,11 @@
 				0EAB1B161A2DA4D3008A0AE2 /* icon_lbs_28_n@2x.png in Resources */,
 				0EAB1B201A2DA4D3008A0AE2 /* status_cancel.png in Resources */,
 				0ED8E3CD1A286BDF0072E833 /* Default-568h@2x.png in Resources */,
+				10FEA93B1A31FBB2001762B3 /* add.png in Resources */,
 				0EAB1B121A2DA4D3008A0AE2 /* coffee-22.png in Resources */,
 				0EAB1B1A1A2DA4D3008A0AE2 /* KTV-22.png in Resources */,
 				0EAB1B101A2DA4D3008A0AE2 /* cancel-22.png in Resources */,
+				10838FD91A31DC5D00913979 /* status_accept2.png in Resources */,
 				0EAB1B0A1A2DA4D3008A0AE2 /* Images.xcassets in Resources */,
 				0EAB1B1C1A2DA4D3008A0AE2 /* pending@2x.png in Resources */,
 				0EAB1B181A2DA4D3008A0AE2 /* icon_my_setup_search@2x.png in Resources */,
@@ -681,6 +715,8 @@
 				1062BDBF1A2E24EA00C102CD /* mapapi.bundle in Resources */,
 				0EAB1B1E1A2DA4D3008A0AE2 /* shower-22.png in Resources */,
 				0EAB1B111A2DA4D3008A0AE2 /* cancel_white-22.png in Resources */,
+				10FEA9431A3223FF001762B3 /* rightAccept.png in Resources */,
+				10838FDA1A31DC5D00913979 /* status_cancel2.png in Resources */,
 				0EAB1B191A2DA4D3008A0AE2 /* icon_nav_reply_n@2x.png in Resources */,
 				0EAB1B0F1A2DA4D3008A0AE2 /* accept.png in Resources */,
 				0EAB1B171A2DA4D3008A0AE2 /* icon_message_return_gray.png in Resources */,
@@ -773,6 +809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10FEA9411A3212F1001762B3 /* HangoutSWTableCell.m in Sources */,
 				0EAB1B051A2DA4D3008A0AE2 /* Enums.m in Sources */,
 				0EAB1B011A2DA4D3008A0AE2 /* CoffeeAPI.m in Sources */,
 				0EAB1B081A2DA4D3008A0AE2 /* User.m in Sources */,
@@ -780,11 +817,13 @@
 				10A9341C1A2F50FB00B5323F /* Location.m in Sources */,
 				10B95B291A306345004794CD /* Constants.m in Sources */,
 				0EAB1B071A2DA4D3008A0AE2 /* Hangout.m in Sources */,
+				10838FD31A31C19100913979 /* HangoutV2ViewController.m in Sources */,
 				0EAB1B281A2DA4D3008A0AE2 /* UITableGridViewCell.m in Sources */,
 				0EAB1B061A2DA4D3008A0AE2 /* Group.m in Sources */,
 				0EAB1B291A2DA4D3008A0AE2 /* HangoutDetailViewController.m in Sources */,
 				0EAB1B031A2DA4D3008A0AE2 /* JSONModelRequestSerializer.m in Sources */,
 				0EAB1B241A2DA4D3008A0AE2 /* ActivityReplyView.m in Sources */,
+				10FEA93E1A321149001762B3 /* HangoutViewControllerV2.m in Sources */,
 				10A9341F1A2F778000B5323F /* HangoutInvationViewController.m in Sources */,
 				10A934221A2F77E500B5323F /* InvationTableCell.m in Sources */,
 				0EAB1B021A2DA4D3008A0AE2 /* CoffeeAPIError.m in Sources */,
@@ -795,6 +834,7 @@
 				10ABCBE71A2E1103004F9EB5 /* LocationTableCell.m in Sources */,
 				0EAB1B4B1A2DA8C8008A0AE2 /* HangoutLocationViewController.mm in Sources */,
 				0E74C71E1A2DB692002FD425 /* NewActivityViewController.m in Sources */,
+				10838FD61A31CB9B00913979 /* HangoutV2CollectionViewCell.m in Sources */,
 				0EAB1B0C1A2DA4D3008A0AE2 /* main.m in Sources */,
 				0EAB1B001A2DA4D3008A0AE2 /* AppDelegate.m in Sources */,
 				0EAB1B231A2DA4D3008A0AE2 /* ActivityCollectionCell.m in Sources */,

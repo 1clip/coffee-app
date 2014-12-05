@@ -61,9 +61,36 @@
     return [UIColor colorWithRed:174.0/255.0 green:174.0/255.0 blue:174.0/255.0 alpha:1.0];
 }
 
++(UIColor*) OrangeBackgroundColor
+{
+    return [UIColor colorWithRed:252.0/255.0 green:175.0/255.0 blue:72.0/255.0 alpha:1.0];
+}
+
 +(UIColor*) StatusTableBackgroundColor
 {
     return [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
 }
+
++(UIColor*) MainPageBorderColor
+{
+    return [UIColor colorWithRed:236.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1.0];
+}
+
++(UIColor*) MainPageFontColor
+{
+    return [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0];
+}
+
++(UIColor*) AddActivityFontColor
+{
+    return [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
+}
+
++(UIColor*) SWButtonBackgroundColor
+{
+    return [UIColor colorWithRed:77.0/255.0 green:77.0/255.0 blue:77.0/255.0 alpha:1.0];
+}
+
+
 
 @end

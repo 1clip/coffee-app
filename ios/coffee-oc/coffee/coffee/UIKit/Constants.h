@@ -23,8 +23,18 @@
 +(UIColor*) GrayFrontendColor;
 +(UIColor*) GrayBorderColor;
 
++(UIColor*) OrangeBackgroundColor;
+
+
 +(UIColor*) ActivityGreenBackground;
 
 +(UIColor*) StatusTableBackgroundColor;
+
+
++(UIColor*) MainPageBorderColor;
++(UIColor*) MainPageFontColor;
++(UIColor*) AddActivityFontColor;
+
++(UIColor*) SWButtonBackgroundColor;
 
 @end
