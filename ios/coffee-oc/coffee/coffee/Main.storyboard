@@ -28,7 +28,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FVM-cR-Fk6" userLabel="selectedActivity">
                                                 <rect key="frame" x="15" y="6" width="46" height="46"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="FVM-cR-Fk6" secondAttribute="height" id="wPG-wB-Dmc"/>
+                                                    <constraint firstAttribute="height" secondItem="FVM-cR-Fk6" secondAttribute="width" multiplier="1:1" id="Lxc-iC-FVC"/>
                                                 </constraints>
                                             </imageView>
                                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="240-fQ-5vZ">
@@ -175,8 +175,8 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKO-XC-5vL" userLabel="AddressLabel">
-                                                            <rect key="frame" x="109" y="58" width="42" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKO-XC-5vL" userLabel="AddressLabel">
+                                                            <rect key="frame" x="109" y="69" width="31" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -353,7 +353,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C0m-tm-Pro" userLabel="LbsView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_lbs_28_n.png" translatesAutoresizingMaskIntoConstraints="NO" id="C0m-tm-Pro" userLabel="LbsView">
                                         <rect key="frame" x="459" y="110" width="15" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="C0m-tm-Pro" secondAttribute="height" multiplier="4:5" id="Bu0-sg-Dm5"/>
@@ -408,13 +408,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l9a-LD-uvX" userLabel="AcceptButtonView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accept.png" translatesAutoresizingMaskIntoConstraints="NO" id="l9a-LD-uvX" userLabel="AcceptButtonView">
                                         <rect key="frame" x="214" y="12" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="l9a-LD-uvX" secondAttribute="height" id="BRn-qU-5p6"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eed-rm-dby" userLabel="CancelButtonView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancel-22.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eed-rm-dby" userLabel="CancelButtonView">
                                         <rect key="frame" x="339" y="12" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Eed-rm-dby" secondAttribute="height" id="Auz-ij-tKB"/>
@@ -475,14 +475,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dinner" id="dYH-6Y-F63"/>
                     <connections>
-                        <outlet property="_acceptActionButtonView" destination="l9a-LD-uvX" id="B1r-9a-tiI"/>
-                        <outlet property="_activityDetailView" destination="CGe-IV-TEG" id="Dsf-95-9rS"/>
-                        <outlet property="_cancelActionButtonView" destination="Eed-rm-dby" id="gru-Cg-Qb3"/>
-                        <outlet property="_detailView" destination="lOg-r6-GdL" id="ZFX-MO-tcH"/>
+                        <outlet property="acceptActionButtonView" destination="l9a-LD-uvX" id="zHF-WK-8oV"/>
                         <outlet property="activityActionView" destination="VQV-SK-3zO" id="Q7w-bS-P3e"/>
+                        <outlet property="activityDetailView" destination="CGe-IV-TEG" id="uM2-2Z-kGF"/>
                         <outlet property="activityImage" destination="mvu-3C-cqA" id="TIw-3j-zJS"/>
                         <outlet property="activityStatusTableView" destination="tbm-vX-xAN" id="HED-hO-VPk"/>
                         <outlet property="avatorImageView" destination="NBF-5z-j3A" id="qJo-8l-wEF"/>
+                        <outlet property="cancelActionButtonView" destination="Eed-rm-dby" id="kHc-mw-ozq"/>
+                        <outlet property="detailView" destination="lOg-r6-GdL" id="P47-hK-bXV"/>
                         <outlet property="lbsView" destination="C0m-tm-Pro" id="UgC-KE-hWi"/>
                         <outlet property="locationLabel" destination="Wh9-rS-ft0" id="anM-yY-n8D"/>
                         <outlet property="statusImageView" destination="cyf-vL-rli" id="qvQ-yl-9Ri"/>
@@ -576,8 +576,8 @@
                                                                         <constraint firstAttribute="width" secondItem="ua4-Nd-I2Y" secondAttribute="height" multiplier="1:1" id="Ck5-zv-jo4"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQq-Hf-eZw">
-                                                                    <rect key="frame" x="16" y="-2" width="16" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQq-Hf-eZw">
+                                                                    <rect key="frame" x="16" y="1" width="16" height="15"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -688,6 +688,11 @@
             <point key="canvasLocation" x="645" y="299"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="accept.png" width="313" height="313"/>
+        <image name="cancel-22.png" width="313" height="313"/>
+        <image name="icon_lbs_28_n.png" width="10" height="14"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gJI-up-2gY"/>
     </inferredMetricsTieBreakers>

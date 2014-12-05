@@ -76,6 +76,7 @@
 		10ABCBE71A2E1103004F9EB5 /* LocationTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10ABCBE61A2E1103004F9EB5 /* LocationTableCell.m */; };
 		10ABCBE91A2E1801004F9EB5 /* xsq.png in Resources */ = {isa = PBXBuildFile; fileRef = 10ABCBE81A2E1801004F9EB5 /* xsq.png */; };
 		10B95B261A302A3D004794CD /* xiaowu.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B95B251A302A3D004794CD /* xiaowu.png */; };
+		10B95B291A306345004794CD /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B95B281A306345004794CD /* Constants.m */; };
 		1E4DB0B9E474BD38095FDFBB /* libPods-coffee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 597921EC47B53B0F4D7162C3 /* libPods-coffee.a */; };
 		975A5BCAA7EC0864334E9D47 /* libPods-coffeeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */; };
 /* End PBXBuildFile section */
@@ -251,6 +252,8 @@
 		10ABCBE61A2E1103004F9EB5 /* LocationTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableCell.m; sourceTree = "<group>"; };
 		10ABCBE81A2E1801004F9EB5 /* xsq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xsq.png; sourceTree = "<group>"; };
 		10B95B251A302A3D004794CD /* xiaowu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaowu.png; sourceTree = "<group>"; };
+		10B95B271A306345004794CD /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		10B95B281A306345004794CD /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		336ACB363929E815CA0DDFD4 /* Pods-coffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-coffeeTests/Pods-coffeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		453F28ABF56FE980E3185D35 /* libPods-coffeeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffeeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597921EC47B53B0F4D7162C3 /* libPods-coffee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-coffee.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -432,6 +435,8 @@
 				10ABCBE61A2E1103004F9EB5 /* LocationTableCell.m */,
 				10A934201A2F77E500B5323F /* InvationTableCell.h */,
 				10A934211A2F77E500B5323F /* InvationTableCell.m */,
+				10B95B271A306345004794CD /* Constants.h */,
+				10B95B281A306345004794CD /* Constants.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -773,6 +778,7 @@
 				0EAB1B081A2DA4D3008A0AE2 /* User.m in Sources */,
 				0EAB1B251A2DA4D3008A0AE2 /* AddHangoutCollectionCell.m in Sources */,
 				10A9341C1A2F50FB00B5323F /* Location.m in Sources */,
+				10B95B291A306345004794CD /* Constants.m in Sources */,
 				0EAB1B071A2DA4D3008A0AE2 /* Hangout.m in Sources */,
 				0EAB1B281A2DA4D3008A0AE2 /* UITableGridViewCell.m in Sources */,
 				0EAB1B061A2DA4D3008A0AE2 /* Group.m in Sources */,

@@ -9,79 +9,54 @@
 #import "HangoutDetailViewController.h"
 #import "UITableGridViewCell.h"
 #import "ActivityReplyView.h"
+#import "Constants.h"
 
 
 @implementation HangoutDetailViewController
 
-@synthesize activityImage = _activityImage;
-@synthesize _detailView;
-@synthesize _activityDetailView;
-@synthesize avatorImageView = _avatorImageView;
-@synthesize _acceptActionButtonView;
-@synthesize _cancelActionButtonView;
-@synthesize activityStatusTableView = _activityStatusTableView;
-@synthesize swipeView = _swipeView;
-@synthesize activityActionView = _activityActionView;
-@synthesize locationLabel = _locatonLabel;
-@synthesize lbsView = _lbsView;
-@synthesize statusImageView = _statusImageView;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
-    
-    [self._activityDetailView setBackgroundColor:[UIColor colorWithRed:70.0/255.0 green:206.0/255.0 blue:180.0/255.0 alpha:1.0]];
-    
-    _locatonLabel.text = @"Time: 7:00pm Today \n Restaurant: Yun Tun";
-    _locatonLabel.textColor = [UIColor whiteColor];
-    _locatonLabel.backgroundColor = [UIColor clearColor];
-    _locatonLabel.font = [UIFont systemFontOfSize:10];
-    _locatonLabel.textAlignment = NSTextAlignmentCenter;
-    _locatonLabel.numberOfLines = 2;
-    
-    [_lbsView setImage:[UIImage imageNamed:@"icon_lbs_28_n"]];
-    
-    [_avatorImageView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
-    [_avatorImageView setBorderWidth:2.0];
-    UIColor *borderColor = [UIColor colorWithRed:128.0/255.0 green:223.0/255.0 blue:209.0/255.0 alpha:1.0];
-    [_avatorImageView setBorderColor:borderColor];
-
-    
-    [self._acceptActionButtonView setImage:[UIImage imageNamed:@"accept"]];
-    [self._cancelActionButtonView setImage:[UIImage imageNamed:@"cancel-22"]];
-    
+    [self.activityDetailView setBackgroundColor:[Constants GreenBackgroundColor]];
     
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takeAction:)];
     
-    [_activityActionView addGestureRecognizer: tap];
+    [self.activityActionView addGestureRecognizer: tap];
     
-    
-    [swipeView setBackgroundColor:[UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0]];
-    swipeView.alignment = SwipeViewAlignmentEdge;
-    swipeView.pagingEnabled = YES;
-    swipeView.truncateFinalPage = YES;
+    [self.swipeView setBackgroundColor:[Constants StatusTableBackgroundColor]];
+    self.swipeView.alignment = SwipeViewAlignmentEdge;
+    self.swipeView.pagingEnabled = YES;
+    self.swipeView.truncateFinalPage = YES;
 
 }
 
-- (void)viewDidLayoutSubviews {
-    [self.activityImage setBackgroundColor:[UIColor colorWithRed:63.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0]];
+-(void)viewWillAppear:(BOOL)animated {
+    [self.view layoutIfNeeded];
+    [self.activityImage setBackgroundColor:[Constants GreenFrontendColor]];
     [self.activityImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"dinner"]];
-}
-
--(void)viewWillAppear:(BOOL)animated {//    [self.activityImage setImageWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"dinner" ofType:@"png"]]];
     
-
+    
+    _detailView.layer.masksToBounds = YES;
+    _detailView.layer.cornerRadius = _detailView.frame.size.height / 2.0;
+    [_detailView setBackgroundColor:[Constants GreenFrontendColor]];
+    
+    
+    _locationLabel.text = @"Time: 7:00pm Today \n Restaurant: Yun Tun";
+    _locationLabel.textColor = [UIColor whiteColor];
+    _locationLabel.backgroundColor = [UIColor clearColor];
+    _locationLabel.font = [UIFont systemFontOfSize:10];
+    _locationLabel.textAlignment = NSTextAlignmentCenter;
+    _locationLabel.numberOfLines = 2;
+    
+    [_avatorImageView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
+    [_avatorImageView setBorderWidth:2.0];
+    [_avatorImageView setBorderColor:[Constants GreenBorderColor]];
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
 
-    
-    _detailView.layer.masksToBounds = YES;
-    _detailView.layer.cornerRadius = _detailView.frame.size.height / 2.0;
-    [_detailView setBackgroundColor:[UIColor colorWithRed:63.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0]];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,9 +66,7 @@
 
 
 - (void) initTableView{
-    self.activityStatusTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    self.activityStatusTableView.separatorColor = [UIColor lightGrayColor];
-    
+    self.activityStatusTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -101,7 +74,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 3;
 }
 
 
@@ -124,18 +97,15 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //不让tableviewcell有选中效果
-    NSLog(@"selectd row =%ld",indexPath.row);
-    [self.activityStatusTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
 - (void)dealloc
 {
-    swipeView.delegate = nil;
-    swipeView.dataSource = nil;
-    _activityStatusTableView.dataSource = nil;
-    _activityStatusTableView.delegate = nil;
+    self.swipeView.delegate = nil;
+    self.swipeView.dataSource = nil;
+    self.activityStatusTableView.dataSource = nil;
+    self.activityStatusTableView.delegate = nil;
 }
 
 //Swipe view
@@ -145,7 +115,7 @@
     //normally we'd use a backing array
     //as shown in the basic iOS example
     //but for this example we haven't bothered
-    return 100;
+    return 6;
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -156,11 +126,10 @@
         //control events are bound to view controller in nib file
         //note that it is only safe to use the reusingView if we return the same nib for each
         //item view, if different items have different contents, ignore the reusingView value
-        CGFloat height = self._acceptActionButtonView.frame.size.height * 1.1;
+        CGFloat height = self.acceptActionButtonView.frame.size.height * 1.1;
         view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, height + 15.0, self.swipeView.frame.size.height)];
-        [view setBackgroundColor:[UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0]];
-        //if(index % 2 == 0)
-        //[view setBackgroundColor:[UIColor redColor]];
+        [view setBackgroundColor:[Constants StatusTableBackgroundColor]];
+
         CFAvatarView *avator = [[CFAvatarView alloc] initWithFrame:CGRectMake(5.0, (self.swipeView.frame.size.height - height) / 2, height, height)];
         UIColor *bg = [UIColor whiteColor];
         [avator setImageWithURL: nil placeholderImage:[UIImage imageNamed:@"xiaowu"] badgeImage:[UIImage imageNamed:@"accept"]];
@@ -175,53 +144,26 @@
 #pragma mark -
 #pragma mark Control events
 
-- (IBAction)pressedButton:(id)sender
-{
-    //_label.text = [NSString stringWithFormat:@"Button %ld pressed", [_activityMemberView indexOfItemViewOrSubview:sender]];
-}
-
-- (IBAction)toggledSwitch:(id)sender
-{
-    //_label.text = [NSString stringWithFormat:@"Switch %ld toggled", [_activityMemberView indexOfItemViewOrSubview:sender]];
-}
-
-- (IBAction)changedSlider:(id)sender
-{
-    //_label.text = [NSString stringWithFormat:@"Slider %ld changed", [_activityMemberView indexOfItemViewOrSubview:sender]];
-}
-
 - (void)takeAction: (UITapGestureRecognizer *)sender
 {
     CGPoint touchPoint = [sender locationInView:_activityActionView];
-    if(touchPoint.x >= self._acceptActionButtonView.frame.origin.x && touchPoint.x <= self._acceptActionButtonView.frame.origin.x + self._acceptActionButtonView.frame.size.width && touchPoint.y >= self._acceptActionButtonView.frame.origin.y && touchPoint.y <= self._acceptActionButtonView.frame.origin.y + self._acceptActionButtonView.frame.size.height)
+    if(touchPoint.x >= self.acceptActionButtonView.frame.origin.x && touchPoint.x <= self.acceptActionButtonView.frame.origin.x + self.acceptActionButtonView.frame.size.width && touchPoint.y >= self.acceptActionButtonView.frame.origin.y && touchPoint.y <= self.acceptActionButtonView.frame.origin.y + self.acceptActionButtonView.frame.size.height)
     {
-        
-        self.statusImageView.hidden = NO;
-        
         [self.statusImageView setImage:[UIImage imageNamed:@"cancel_white-22"]];
-        
-        [self._activityDetailView setBackgroundColor:[UIColor colorWithRed:245.0/255.0 green:67.0/255.0 blue:76.0/255.0 alpha:1.0]];
-        [self.activityImage setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:60.0/255.0 blue:68.0/255.0 alpha:1.0]];
-        
-        
-        [self._detailView setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:60.0/255.0 blue:68.0/255.0 alpha:1.0]];
-        
+        [self.activityDetailView setBackgroundColor:[Constants RedBackgroundColor]];
+        [self.activityImage setBackgroundColor:[Constants RedFrontendColor]];
+        [self.avatorImageView setBorderColor:[Constants RedBorderColor]];
+        [self.detailView setBackgroundColor:[Constants RedFrontendColor]];
         [self hideActionView];
     }
     
-    if(touchPoint.x >= self._cancelActionButtonView.frame.origin.x && touchPoint.x <= self._cancelActionButtonView.frame.origin.x + self._cancelActionButtonView.frame.size.width && touchPoint.y >= self._cancelActionButtonView.frame.origin.y && touchPoint.y <= self._cancelActionButtonView.frame.origin.y + self._cancelActionButtonView.frame.size.height)
+    if(touchPoint.x >= self.cancelActionButtonView.frame.origin.x && touchPoint.x <= self.cancelActionButtonView.frame.origin.x + self.cancelActionButtonView.frame.size.width && touchPoint.y >= self.cancelActionButtonView.frame.origin.y && touchPoint.y <= self.cancelActionButtonView.frame.origin.y + self.cancelActionButtonView.frame.size.height)
     {
-        
-        self.statusImageView.hidden = NO;
-        
         [self.statusImageView setImage:[UIImage imageNamed:@"cancel_white-22"]];
-        
-        [self._activityDetailView setBackgroundColor:[UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:102.0/255.0 alpha:1.0]];
-        [self.activityImage setBackgroundColor:[UIColor colorWithRed:91.0/255.0 green:91.0/255.0 blue:91.0/255.0 alpha:1.0]];
-        
-        
-        [self._detailView setBackgroundColor:[UIColor colorWithRed:91.0/255.0 green:91.0/255.0 blue:91.0/255.0 alpha:1.0]];
-        
+        [self.activityDetailView setBackgroundColor:[Constants GrayBackgroundColor]];
+        [self.activityImage setBackgroundColor:[Constants GrayFrontendColor]];
+        [self.detailView setBackgroundColor:[Constants GrayFrontendColor]];
+        [self.avatorImageView setBorderColor:[Constants GrayBorderColor]];
         [self hideActionView];
     }
 }
@@ -232,11 +174,11 @@
     NSLayoutConstraint *topConstraint;
     for (NSLayoutConstraint* constraint in self.view.constraints) {
         if (constraint.firstItem == self.swipeView && constraint.secondItem == self.activityActionView){
-            topConstraint = constraint;        }
-        
-        //NSLog(@"%ld %ld", constraint.firstAttribute, constraint.firstAttribute);
+            topConstraint = constraint;
+        }
     }
-    NSLayoutConstraint *newTop = [NSLayoutConstraint constraintWithItem:self.swipeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self._activityDetailView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    NSLayoutConstraint *newTop = [NSLayoutConstraint constraintWithItem:self.swipeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.activityDetailView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     [self.view removeConstraint:topConstraint];
     [self.view addConstraint:newTop];
     [UIView animateWithDuration:.5 animations:^{
@@ -249,15 +191,11 @@
         if (constraint.firstItem == self.activityStatusTableView && constraint.secondItem == self.view
             && constraint.firstAttribute == NSLayoutAttributeHeight){
             heightConstraint = constraint;
-            NSLog(@"%ld %f", constraint.firstAttribute, constraint.multiplier);
         }
     }
     
     heightConstraint.constant = self.activityActionView.frame.size.height;
-    
     [self.view setNeedsLayout];
-
-
 }
 /*
 #pragma mark - Navigation

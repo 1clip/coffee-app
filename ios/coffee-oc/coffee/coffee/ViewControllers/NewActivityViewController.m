@@ -8,6 +8,7 @@
 
 #import "NewActivityViewController.h"
 #import "ActivityCollectionCell.h"
+#import "Constants.h"
 
 @interface NewActivityViewController ()
 
@@ -22,11 +23,11 @@
 @synthesize selectedActivity = _selectedActivity;
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     _selectedActivity.image = [UIImage imageNamed:@"smile-22"];
-    [_selectedActivity setBackgroundColor: [UIColor colorWithRed:0.0/255.0 green:195.0/255.0 blue:167.0/255.0 alpha:1.0]];
+    NSLog(@"%f, %f", _selectedActivity.frame.size.width, _selectedActivity.frame.origin.x);
+    [_selectedActivity setBackgroundColor: [Constants ActivityGreenBackground]];
     // Do any additional setup after loading the view.
 }
 
@@ -49,7 +50,8 @@
     
     static NSString *collectionCellID = @"ActivityCollectionCell";
     ActivityCollectionCell *cell = (ActivityCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:collectionCellID forIndexPath:indexPath];
-    [cell.activityView setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:195.0/255.0 blue:167.0/255.0 alpha:1.0]];    switch (indexPath.section * 3 + indexPath.row) {
+    [cell.activityView setBackgroundColor:[Constants ActivityGreenBackground]];
+    switch (indexPath.section * 3 + indexPath.row) {
         case 0:
             cell.imageName = @"dinner-22";
             break;
@@ -84,16 +86,14 @@
     //[self.collectionView reloadData];
     if(selectedCell)
     {
-        [selectedCell.activityView setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:195.0/255.0 blue:167.0/255.0 alpha:1.0]];
+        [selectedCell.activityView setBackgroundColor:[Constants ActivityGreenBackground]];
     }
     
     ActivityCollectionCell * cell = (ActivityCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [self.selectedActivity setImage:[UIImage imageNamed:@"dinner"]];
     
-    UIColor *color = [UIColor colorWithRed:245.0/255.0 green:67.0/255.0 blue:76.0/255.0 alpha:1.0];
-    
-    [self.selectedActivity setBackgroundColor:color];
-    [cell.activityView setBackgroundColor:color];
+    [self.selectedActivity setBackgroundColor:[Constants RedBackgroundColor]];
+    [cell.activityView setBackgroundColor:[Constants RedBackgroundColor]];
     
     selectedCell = cell;
 }

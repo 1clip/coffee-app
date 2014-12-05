@@ -26,7 +26,6 @@
     searchLocation = [[SearchLocation alloc] init];
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
     {
-        //        self.edgesForExtendedLayout=UIRectEdgeNone;
         self.navigationController.navigationBar.translucent = NO;
     }
     
@@ -40,6 +39,20 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
+    [self.view layoutIfNeeded];
+    
+    NSLayoutConstraint *heightConstraint;
+    for (NSLayoutConstraint* constraint in self.view.constraints) {
+        if (constraint.firstItem == self.mapView && constraint.secondItem == self.view
+            && constraint.firstAttribute == NSLayoutAttributeHeight){
+            heightConstraint = constraint;
+        }
+    }
+    
+    //heightConstraint.constant = self..frame.size.height;
+    //[self.view setNeedsLayout];
+
     
     [_mapView viewWillAppear];
     CLLocationCoordinate2D corrdinate;
