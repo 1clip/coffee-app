@@ -49,6 +49,7 @@
     
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
+    self.tabBarController.tabBar.hidden = NO;
     [self.view layoutIfNeeded];
     CGFloat width = self.addHangoutView.frame.size.width / 2;
     UIImageView *addImage = [[UIImageView alloc] initWithFrame:CGRectMake(width - 15, 5, 30, 30)];

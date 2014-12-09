@@ -26,9 +26,12 @@ NSInteger lastCurrentIndex;
     
     [self.activityView setBackgroundColor:[Constants NewActivityTableBackgroundColor]];
     
-    self.activityView.alignment = SwipeViewAlignmentEdge;
+    //self.activityView.alignment = SwipeViewAlignmentEdge;
     //self.activityView.pagingEnabled = YES;
-    self.activityView.truncateFinalPage = YES;
+    //self.activityView.truncateFinalPage = YES;
+    
+    
+    self.activityView.type = iCarouselTypeCoverFlow2;
     
     [self InitTextBoxBorder:self.descView];
     [self InitTextBoxBorder:self.addressView];
@@ -56,6 +59,7 @@ NSInteger lastCurrentIndex;
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = YES;
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +67,7 @@ NSInteger lastCurrentIndex;
     // Dispose of any resources that can be recreated.
 }
 
+/*
 //Swipe view
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
@@ -179,12 +184,86 @@ NSInteger lastCurrentIndex;
 {
     if(lastCurrentIndex != self.activityView.currentItemIndex)
     {
-        NSLog(@"%d %f", self.activityView.currentItemIndex, self.activityView.scrollOffset);
         [self.activityView reloadData];
-        
     }
     
     lastCurrentIndex = self.activityView.currentItemIndex;
+}
+*/
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    //return the total number of items in the carousel
+    return 7;
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    //create new view if no view is available for recycling
+    if (view == nil)
+    {
+        //don't do anything specific to the index within
+        //this `if (view == nil) {...}` statement because the view will be
+        //recycled and used with other index values later
+        CGFloat width = self.activityView.frame.size.width / 3.0;
+        
+        CGFloat hight = MIN(width, self.activityView.frame.size.height - 10);
+        NSString *imageName = @"coffee-22";
+        switch(index)
+        {
+            case 0:
+                imageName = @"dinner-22";
+                break;
+            case 1:
+                imageName = @"coffee-22";
+                break;
+            case 2:
+                imageName = @"shopping-22";
+                break;
+            case 3:
+                imageName = @"shower-22";
+                break;
+            case 4:
+                imageName = @"movie-22";
+                break;
+            case 5:
+                imageName = @"KTV-22";
+                break;
+                
+                
+        }
+
+        NSLog(@"%f %f", width, hight);
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, hight, hight)];
+        if(index == self.activityView.currentItemIndex)
+        {
+            [view setBackgroundColor:[Constants OrangeBackgroundColor]];
+        }
+        else
+        {
+            [view setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:0.5]];
+        }
+        [((UIImageView *)view) setImage: [UIImage imageNamed:imageName]];
+        //view.contentMode = UIViewContentModeCenter;
+    }
+    
+    return view;
+}
+
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    if (option == iCarouselOptionSpacing)
+    {
+        return value * 1.1;
+    }
+    return value;
+}
+
+
+
+- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel
+{
+    //[self.activityView scrollToItemAtIndex:self.activityView.currentItemIndex animated:YES];
+    [self.activityView reloadData];
 }
 
 /*

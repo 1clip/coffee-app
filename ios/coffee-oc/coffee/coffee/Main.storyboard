@@ -807,7 +807,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmk-v2-qvP" userLabel="ActivityView" customClass="SwipeView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmk-v2-qvP" userLabel="ActivityView" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="73" width="600" height="132"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -914,7 +914,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-jr-wb4" userLabel="DateView">
-                                <rect key="frame" x="15" y="345" width="285" height="40"/>
+                                <rect key="frame" x="15" y="345" width="280" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date.png" translatesAutoresizingMaskIntoConstraints="NO" id="DF9-qF-qQ4">
                                         <rect key="frame" x="10" y="4" width="32" height="32"/>
@@ -923,7 +923,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXp-Kt-CJ3" userLabel="InputText">
-                                        <rect key="frame" x="47" y="4" width="238" height="32"/>
+                                        <rect key="frame" x="47" y="4" width="233" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -940,7 +940,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTx-ll-q7G" userLabel="TimeView">
-                                <rect key="frame" x="310" y="345" width="275" height="40"/>
+                                <rect key="frame" x="305" y="345" width="280" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time.png" translatesAutoresizingMaskIntoConstraints="NO" id="uKd-0Z-IXu">
                                         <rect key="frame" x="10" y="4" width="32" height="32"/>
@@ -949,7 +949,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Time" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="56H-c0-6Zg" userLabel="InputText">
-                                        <rect key="frame" x="47" y="4" width="228" height="32"/>
+                                        <rect key="frame" x="47" y="4" width="233" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -997,7 +997,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8gp-8n-SvE" firstAttribute="height" secondItem="Y3j-wU-7nY" secondAttribute="height" multiplier="0.08" id="2SE-zt-fGv"/>
                             <constraint firstItem="t70-e4-8kW" firstAttribute="top" secondItem="SOe-Y3-EOe" secondAttribute="bottom" constant="15" id="4wd-b2-h0w"/>
                             <constraint firstItem="7hl-jr-wb4" firstAttribute="top" secondItem="t70-e4-8kW" secondAttribute="bottom" constant="15" id="5M3-Hp-tcm"/>
                             <constraint firstItem="8gp-8n-SvE" firstAttribute="top" secondItem="RCT-5N-RUE" secondAttribute="bottom" id="6IO-Y1-VQx"/>
@@ -1007,7 +1006,7 @@
                             <constraint firstItem="DHB-tS-Rjb" firstAttribute="centerY" secondItem="v1h-zi-gF3" secondAttribute="centerY" id="Eh4-20-dNE"/>
                             <constraint firstItem="KTx-ll-q7G" firstAttribute="centerY" secondItem="7hl-jr-wb4" secondAttribute="centerY" id="GXj-7j-vb1"/>
                             <constraint firstItem="t70-e4-8kW" firstAttribute="leading" secondItem="SOe-Y3-EOe" secondAttribute="leading" id="KPb-HG-Hy9"/>
-                            <constraint firstItem="7hl-jr-wb4" firstAttribute="width" secondItem="t70-e4-8kW" secondAttribute="width" multiplier="0.5" id="Kkf-1U-BuC"/>
+                            <constraint firstItem="7hl-jr-wb4" firstAttribute="width" secondItem="t70-e4-8kW" secondAttribute="width" multiplier="0.5" constant="-5" id="Kkf-1U-BuC"/>
                             <constraint firstItem="8gp-8n-SvE" firstAttribute="width" secondItem="Y3j-wU-7nY" secondAttribute="width" id="M5l-am-xsb"/>
                             <constraint firstAttribute="leading" secondItem="8gp-8n-SvE" secondAttribute="leading" id="Mba-CL-fQB"/>
                             <constraint firstAttribute="centerX" secondItem="520-Lt-SiY" secondAttribute="centerX" id="Ndf-f6-gmA"/>
@@ -1031,11 +1030,6 @@
                             <constraint firstItem="KTx-ll-q7G" firstAttribute="height" secondItem="t70-e4-8kW" secondAttribute="height" id="wlx-Kn-nPz"/>
                             <constraint firstItem="4cq-8N-5hd" firstAttribute="top" secondItem="520-Lt-SiY" secondAttribute="bottom" constant="5" id="yFN-rW-9uY"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2SE-zt-fGv"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="XbU-6f-NX4"/>
                     <connections>
