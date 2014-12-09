@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -47,6 +46,9 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationItem.hidesBackButton = YES;
     [self.view layoutIfNeeded];
     CGFloat width = self.addHangoutView.frame.size.width / 2;
     UIImageView *addImage = [[UIImageView alloc] initWithFrame:CGRectMake(width - 15, 5, 30, 30)];
@@ -59,11 +61,14 @@
     [label setTextAlignment:NSTextAlignmentCenter];
     [self.addHangoutView addSubview:label];
     
+    [self.view setNeedsLayout];
+    
 }
 
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     static NSString *identifier = @"HangoutSWTableCell";
     HangoutSWTableCell *cell = [self.hangoutView  dequeueReusableCellWithIdentifier:identifier];
     if (cell != nil)
@@ -131,7 +136,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //[self.hangoutView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.hangoutView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

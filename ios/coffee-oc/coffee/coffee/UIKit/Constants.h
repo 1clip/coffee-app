@@ -30,10 +30,14 @@
 
 +(UIColor*) StatusTableBackgroundColor;
 
++(UIColor*) NewActivityTableBackgroundColor;
+
 
 +(UIColor*) MainPageBorderColor;
 +(UIColor*) MainPageFontColor;
 +(UIColor*) AddActivityFontColor;
+
++(UIColor*) InviteFriendBorderColor;
 
 +(UIColor*) SWButtonBackgroundColor;
 

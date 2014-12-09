@@ -71,6 +71,11 @@
     return [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
 }
 
++(UIColor*) NewActivityTableBackgroundColor
+{
+    return [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:0.5];
+}
+
 +(UIColor*) MainPageBorderColor
 {
     return [UIColor colorWithRed:236.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1.0];
@@ -85,6 +90,13 @@
 {
     return [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
 }
+
++(UIColor*) InviteFriendBorderColor
+{
+    return [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
+}
+
+
 
 +(UIColor*) SWButtonBackgroundColor
 {
