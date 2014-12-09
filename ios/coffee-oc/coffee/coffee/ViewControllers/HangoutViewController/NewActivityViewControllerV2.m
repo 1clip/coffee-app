@@ -17,6 +17,8 @@
 
 @implementation NewActivityViewControllerV2
 
+NSInteger lastCurrentIndex;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -25,7 +27,7 @@
     [self.activityView setBackgroundColor:[Constants NewActivityTableBackgroundColor]];
     
     self.activityView.alignment = SwipeViewAlignmentEdge;
-    self.activityView.pagingEnabled = YES;
+    //self.activityView.pagingEnabled = YES;
     self.activityView.truncateFinalPage = YES;
     
     [self InitTextBoxBorder:self.descView];
@@ -37,6 +39,8 @@
     [self.inviteFriendBorder setBackgroundColor:[Constants InviteFriendBorderColor]];
     
     [self.avatorView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
+    
+    lastCurrentIndex = -1;
     
 }
 
@@ -73,26 +77,30 @@
 {
     //if (!view)
     //{
-    NSLog(@"%d", index);
+    //NSLog(@"%d %d", index, self.activityView.currentItemIndex);
+    
+    CGFloat width = self.activityView.frame.size.width / 3;
+
     
     NSString *imageName = @"coffee-22";
-    CGFloat width = self.activityView.frame.size.width / 3;
-    CGFloat hight = MIN(width, self.activityView.frame.size.height - 20);
     UIView *myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, self.activityView.frame.size.height)];
-    [myview setBackgroundColor:[Constants StatusTableBackgroundColor]];
-    UIView* view1;
+    [myview setBackgroundColor:[Constants StatusTableBackgroundColor]];    UIView* view1;
     CGFloat width1 = width - 10;
     
-    if(index % 3 == 0)
+    CGFloat hight = MIN(width1, self.activityView.frame.size.height - 20);
+
+    if(index == self.activityView.currentItemIndex || index == self.activityView.currentItemIndex + 1
+       || index == self.activityView.currentItemIndex + 2)
+    {
+    if(index == self.activityView.currentItemIndex)
     {
         view1 = [[Trapezoid alloc]initWithFrame:CGRectMake(15, (self.activityView.frame.size.height - hight) / 2, width1, hight)];
         
         [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:0.5]];
         
-        imageName = @"dinner-22";
     }
     
-    else if(index % 3 == 1)
+    else if(index == self.activityView.currentItemIndex + 1)
     {
         view1 = [[UIView alloc] initWithFrame:CGRectMake(5, (self.activityView.frame.size.height - hight) / 2, width1, hight)];
         
@@ -112,10 +120,30 @@
         view1 = [[Trapezoid1 alloc] initWithFrame:CGRectMake(0, (self.activityView.frame.size.height - hight) / 2, width1 - 3, hight)];
         
         [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:0.5]];
-        
-        imageName = @"shopping-22";
+            }
+    switch(index)
+    {
+        case 0:
+            imageName = @"dinner-22";
+            break;
+        case 1:
+            imageName = @"coffee-22";
+            break;
+        case 2:
+            imageName = @"shopping-22";
+            break;
+        case 3:
+            imageName = @"shower-22";
+            break;
+        case 4:
+            imageName = @"movie-22";
+            break;
+        case 5:
+            imageName = @"KTV-22";
+            break;
+
+            
     }
-    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, view1.frame.size.width, view1.frame.size.height)];
     [imageView setBackgroundColor:[UIColor clearColor]];
     
@@ -130,6 +158,7 @@
     
     
     [myview addSubview:view1];
+    }
     
 
     
@@ -139,10 +168,23 @@
 - (CGSize)swipeViewItemSize:(SwipeView *)swipeView
 {
     CGSize size;
-    size.height = swipeView.frame.size.height;
-    size.width = swipeView.frame.size.width / 3;
+    size.height = self.activityView.frame.size.height;
+    size.width = self.activityView.frame.size.width / 3;
     
     return size;
+}
+
+
+- (void)swipeViewDidEndDragging:(SwipeView *)swipeView willDecelerate:(BOOL)decelerate;
+{
+    if(lastCurrentIndex != self.activityView.currentItemIndex)
+    {
+        NSLog(@"%d %f", self.activityView.currentItemIndex, self.activityView.scrollOffset);
+        [self.activityView reloadData];
+        
+    }
+    
+    lastCurrentIndex = self.activityView.currentItemIndex;
 }
 
 /*
