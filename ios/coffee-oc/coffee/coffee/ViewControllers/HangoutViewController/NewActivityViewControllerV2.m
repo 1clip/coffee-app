@@ -71,30 +71,30 @@
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    if (!view)
-    {
+    //if (!view)
+    //{
     NSLog(@"%d", index);
     
     NSString *imageName = @"coffee-22";
     CGFloat width = self.activityView.frame.size.width / 3;
-    
-    view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, self.activityView.frame.size.height)];
-    [view setBackgroundColor:[Constants StatusTableBackgroundColor]];
-    
-        [view layoutIfNeeded];
+    CGFloat hight = MIN(width, self.activityView.frame.size.height - 20);
+    UIView *myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, self.activityView.frame.size.height)];
+    [myview setBackgroundColor:[Constants StatusTableBackgroundColor]];
     UIView* view1;
     CGFloat width1 = width - 10;
+    
     if(index % 3 == 0)
     {
-        view1 = [[Trapezoid alloc]initWithFrame:CGRectMake(15, (self.activityView.frame.size.height - width1) / 2, width1, width1)];
+        view1 = [[Trapezoid alloc]initWithFrame:CGRectMake(15, (self.activityView.frame.size.height - hight) / 2, width1, hight)];
         
         [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:0.5]];
         
         imageName = @"dinner-22";
     }
+    
     else if(index % 3 == 1)
     {
-        view1 = [[UIView alloc] initWithFrame:CGRectMake(5, (self.activityView.frame.size.height - width1) / 2, width1, width1)];
+        view1 = [[UIView alloc] initWithFrame:CGRectMake(5, (self.activityView.frame.size.height - hight) / 2, width1, hight)];
         
         [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:1.0]];
         
@@ -102,13 +102,14 @@
         
         [borderView setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:1.0]];
         
-        [view addSubview:borderView];
+        [myview addSubview:borderView];
 
     }
     
+    
     else
     {
-        view1 = [[Trapezoid1 alloc] initWithFrame:CGRectMake(0, (self.activityView.frame.size.height - width1) / 2, width1 - 3, width1)];
+        view1 = [[Trapezoid1 alloc] initWithFrame:CGRectMake(0, (self.activityView.frame.size.height - hight) / 2, width1 - 3, hight)];
         
         [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:0.5]];
         
@@ -128,11 +129,11 @@
     //item view, if different items have different contents, ignore the reusingView value
     
     
-    [view addSubview:view1];
-    }
+    [myview addSubview:view1];
+    
 
     
-    return view;
+    return myview;
 }
 
 - (CGSize)swipeViewItemSize:(SwipeView *)swipeView
