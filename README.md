@@ -6,6 +6,7 @@ coffee-app
   
   ```
   gem install cocoapods
+  pod setup
   ```
     
   * Install\Update pods in China
