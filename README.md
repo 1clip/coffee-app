@@ -5,7 +5,8 @@ coffee-app
   * Install [CocoaPods](http://cocoapods.org)
   
   ```
-  sudo gen install cocoapods
+  gem install cocoapods
+  pod setup
   ```
     
   * Install\Update pods in China
