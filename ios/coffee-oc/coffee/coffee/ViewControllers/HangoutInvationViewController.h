@@ -9,12 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "InvationTableCell.h"
 #import "SwipeView.h"
+#import "HVTableView.h"
 
-@interface HangoutInvationViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, SwipeViewDelegate, SwipeViewDataSource>
+@interface HangoutInvationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SwipeViewDataSource, SwipeViewDelegate>
 
 
 @property(nonatomic, strong) IBOutlet UISearchBar *searchBar;
 @property(nonatomic, strong) IBOutlet UITableView* tableView;
+
+@property(nonatomic, strong) IBOutlet UIButton *closeButton;
+@property(nonatomic, strong) IBOutlet UIButton *okButton;
+
 
 
 @end

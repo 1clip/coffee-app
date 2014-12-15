@@ -25,6 +25,8 @@ BMKMapManager *_mapManager;
         NSLog(@"manager start failed!");
     }
     
+    
+    
     return YES;
 }
 

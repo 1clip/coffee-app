@@ -9,51 +9,42 @@
 #import "NewActivityViewControllerV2.h"
 #import "Constants.h"
 #import "QuartzCore/QuartzCore.h"
+#import "Placeholder.h"
 
 
 @interface NewActivityViewControllerV2 ()
 
 @end
 
-@implementation NewActivityViewControllerV2
 
-NSInteger lastCurrentIndex;
+static NSMutableArray *memberListData;
+
+@implementation NewActivityViewControllerV2
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     [self.activityView setBackgroundColor:[Constants NewActivityTableBackgroundColor]];
-    
-    //self.activityView.alignment = SwipeViewAlignmentEdge;
-    //self.activityView.pagingEnabled = YES;
-    //self.activityView.truncateFinalPage = YES;
-    
-    
     self.activityView.type = iCarouselTypeCoverFlow2;
     
     [self InitTextBoxBorder:self.descView];
     [self InitTextBoxBorder:self.addressView];
     [self InitTextBoxBorder:self.dateView];
     [self InitTextBoxBorder:self.timeView];
+    [self InitTextBoxBorder:self.durationView];
     
-    [self.inviteFriend setTextColor:[Constants AddActivityFontColor]];
-    [self.inviteFriendBorder setBackgroundColor:[Constants InviteFriendBorderColor]];
-    
-    [self.avatorView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
-    
-    lastCurrentIndex = -1;
-    
+    [self LoadFriendsView];
 }
 
--(void) InitTextBoxBorder:(UIView *) textView
-{
-    textView.layer.cornerRadius=8.0f;
-    textView.layer.masksToBounds=YES;
-    textView.layer.borderColor = [Constants OrangeBackgroundColor].CGColor; // set color as you want.
-    textView.layer.borderWidth = 1.0;
 
+-(void) addNewFriend:(PlaceholderUser *) user
+{
+    if(memberListData == nil)
+    {
+        memberListData = [[NSMutableArray alloc] init];
+    }
+    [memberListData addObject:user];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -67,7 +58,42 @@ NSInteger lastCurrentIndex;
     // Dispose of any resources that can be recreated.
 }
 
-/*
+-(void) InitTextBoxBorder:(UIView *) textView
+{
+    textView.layer.cornerRadius=8.0f;
+    textView.layer.masksToBounds=YES;
+    textView.layer.borderColor = [Constants OrangeBackgroundColor].CGColor; // set color as you want.
+    textView.layer.borderWidth = 1.0;
+
+}
+
+-(void) LoadFriendsView
+{
+    [self.addressButton addTarget:self action:@selector(findAddress:) forControlEvents:UIControlEventTouchUpInside];
+    [self.inviteFriend setTextColor:[Constants AddActivityFontColor]];
+    [self.inviteFriendBorder setBackgroundColor:[Constants InviteFriendBorderColor]];
+    
+
+    if(memberListData == nil)
+    {
+        PlaceholderUser *user = [PlaceholderUser alloc];
+        user.userName = @"奥迪哥";
+        user.avatorImage = @"Sample_Audi.jpg";
+
+        memberListData = [[NSMutableArray alloc] init];
+        [memberListData addObject:user];
+    }
+    
+    
+    [self.addFriendButton addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.addLabel setTextColor:[Constants OrangeBackgroundColor]];
+    
+    [self reloadMemberData];
+    
+}
+
+
 //Swipe view
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
@@ -75,121 +101,49 @@ NSInteger lastCurrentIndex;
     //normally we'd use a backing array
     //as shown in the basic iOS example
     //but for this example we haven't bothered
-    return 6;
+    return memberListData.count;
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    //if (!view)
-    //{
-    //NSLog(@"%d %d", index, self.activityView.currentItemIndex);
-    
-    CGFloat width = self.activityView.frame.size.width / 3;
-
-    
-    NSString *imageName = @"coffee-22";
-    UIView *myview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, self.activityView.frame.size.height)];
-    [myview setBackgroundColor:[Constants StatusTableBackgroundColor]];    UIView* view1;
-    CGFloat width1 = width - 10;
-    
-    CGFloat hight = MIN(width1, self.activityView.frame.size.height - 20);
-
-    if(index == self.activityView.currentItemIndex || index == self.activityView.currentItemIndex + 1
-       || index == self.activityView.currentItemIndex + 2)
+    if(!view)
     {
-    if(index == self.activityView.currentItemIndex)
-    {
-        view1 = [[Trapezoid alloc]initWithFrame:CGRectMake(15, (self.activityView.frame.size.height - hight) / 2, width1, hight)];
-        
-        [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:0.5]];
-        
+        CGFloat height = self.addFriendButton.frame.size.height;
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, height + 10, height)];
+        CFAvatarView *avator = [[CFAvatarView alloc] initWithFrame:CGRectMake(5.0, -10, height, height)];
+        PlaceholderUser *user = memberListData[index];
+        [avator setImageWithURL:nil placeholderImage:[UIImage imageNamed:user.avatorImage]];
+        UILabel *userLabel = [[UILabel alloc] initWithFrame:CGRectMake(avator.frame.origin.x, avator.frame.origin.y + avator.frame.size.height + 10, height, 10)];
+        [userLabel setText:user.userName];
+        [userLabel setFont:[UIFont systemFontOfSize:10.0]];
+        [userLabel setTextAlignment:NSTextAlignmentCenter];
+        [view addSubview:avator];
+        [view addSubview:userLabel];
     }
     
-    else if(index == self.activityView.currentItemIndex + 1)
-    {
-        view1 = [[UIView alloc] initWithFrame:CGRectMake(5, (self.activityView.frame.size.height - hight) / 2, width1, hight)];
-        
-        [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:1.0]];
-        
-        UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake(5, self.activityView.frame.size.height - 2, width1, 2)];
-        
-        [borderView setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:1.0]];
-        
-        [myview addSubview:borderView];
-
-    }
-    
-    
-    else
-    {
-        view1 = [[Trapezoid1 alloc] initWithFrame:CGRectMake(0, (self.activityView.frame.size.height - hight) / 2, width1 - 3, hight)];
-        
-        [view1 setBackgroundColor:[UIColor colorWithRed:249.0/255.0 green:175.0/255.0 blue:60.0/255.0 alpha:0.5]];
-            }
-    switch(index)
-    {
-        case 0:
-            imageName = @"dinner-22";
-            break;
-        case 1:
-            imageName = @"coffee-22";
-            break;
-        case 2:
-            imageName = @"shopping-22";
-            break;
-        case 3:
-            imageName = @"shower-22";
-            break;
-        case 4:
-            imageName = @"movie-22";
-            break;
-        case 5:
-            imageName = @"KTV-22";
-            break;
-
-            
-    }
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, view1.frame.size.width, view1.frame.size.height)];
-    [imageView setBackgroundColor:[UIColor clearColor]];
-    
-    [imageView setImage:[UIImage imageNamed:imageName]];
-    
-    [view1 addSubview:imageView];
-    //[view1 setImage:[UIImage imageNamed:@"dinner-22"]];
-    //load new item view instance from nib
-    //control events are bound to view controller in nib file
-    //note that it is only safe to use the reusingView if we return the same nib for each
-    //item view, if different items have different contents, ignore the reusingView value
-    
-    
-    [myview addSubview:view1];
-    }
-    
-
-    
-    return myview;
+    return view;
 }
 
-- (CGSize)swipeViewItemSize:(SwipeView *)swipeView
+-(void) reloadMemberData
 {
-    CGSize size;
-    size.height = self.activityView.frame.size.height;
-    size.width = self.activityView.frame.size.width / 3;
-    
-    return size;
-}
-
-
-- (void)swipeViewDidEndDragging:(SwipeView *)swipeView willDecelerate:(BOOL)decelerate;
-{
-    if(lastCurrentIndex != self.activityView.currentItemIndex)
-    {
-        [self.activityView reloadData];
+    NSLayoutConstraint *heightConstraint;
+    for (NSLayoutConstraint* constraint in self.inviteFriendView.constraints) {
+        if (constraint.firstItem == self.inviteFriendView && constraint.firstAttribute == NSLayoutAttributeWidth){
+            //NSLog(@"%@", constraint.firstAttribute);
+            heightConstraint = constraint;
+        }
     }
-    
-    lastCurrentIndex = self.activityView.currentItemIndex;
+    heightConstraint.constant = MIN(300.0, 48 * (1 + memberListData.count));
+    [self.swipeFriends reloadData];
+    [self.view setNeedsLayout];
+
 }
-*/
+
+-(void) addFriendAction: (UIButton *) sender
+{
+    [self performSegueWithIdentifier:@"InviteFriends" sender:self];    
+}
+
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //return the total number of items in the carousel
@@ -266,6 +220,10 @@ NSInteger lastCurrentIndex;
     [self.activityView reloadData];
 }
 
+-(void) findAddress:(UIButton *) sender
+{
+    [self performSegueWithIdentifier:@"Location" sender:self];
+}
 /*
 #pragma mark - Navigation
 

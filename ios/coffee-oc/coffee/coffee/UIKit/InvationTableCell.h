@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipeView.h"
 
 @interface InvationTableCell : UITableViewCell
+
+@property(nonatomic, strong) IBOutlet SwipeView *detailsView;
+@property(nonatomic, strong) IBOutlet UIView *groupView;
+@property(nonatomic, strong) IBOutlet UIButton *selectedButton;
+@property(nonatomic, strong) IBOutlet UIView *countView;
+@property(nonatomic, strong) IBOutlet UILabel *countLabel;
+@property(nonatomic, strong) IBOutlet UILabel *groupName;
+
+@property(nonatomic, strong) IBOutlet UIView *borderView;
 
 @end

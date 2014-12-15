@@ -11,8 +11,8 @@
 #import "BMapKit.h"
 #import "BMKPoiSearch.h"
 #import <GoogleMaps/GoogleMaps.h>
-#import "Location.h"
-@interface HangoutLocationViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, BMKMapViewDelegate,BMKPoiSearchDelegate, UISearchBarDelegate>
+#import "Placeholder.h"
+@interface HangoutLocationViewController : UIViewController<BMKMapViewDelegate,BMKPoiSearchDelegate, UISearchBarDelegate>
 {
     BMKPoiSearch* _poiSearch;
     SearchLocation *searchLocation;
@@ -20,5 +20,8 @@
 
 @property(nonatomic, strong) IBOutlet BMKMapView *mapView;
 @property(nonatomic, strong) IBOutlet UISearchBar *searchBar;
-@property(nonatomic, strong) IBOutlet UITableView* tableView;
+
+@property(nonatomic, strong) IBOutlet UIButton *backButton;
+@property(nonatomic, strong) IBOutlet UIButton *okButton;
+
 @end

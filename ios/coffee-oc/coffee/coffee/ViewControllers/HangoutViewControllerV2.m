@@ -22,11 +22,51 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self InitTabBar];
+    [self.personalAvator setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"Sample_Rae.jpg"]];
+    [self.userName setText:@"Rae911211"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)InitTabBar
+{
+    
+    self.tabBarController.tabBar.barTintColor = [Constants StatusTableBackgroundColor];
+}
+
+-(void)AddButtonForTabbar
+{
+
+    for(UIView *subView in self.tabBarController.tabBar.subviews)
+    {
+        if([subView isKindOfClass:[UIButton class]] && ((UIButton*)subView).tag == 100)
+        {
+            NSLog(@"Already add button for tab bar, skip it");
+            return;
+        }
+    }
+    
+    
+    UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0, -2, self.tabBarController.tabBar.frame.size.width, 3)];
+    [borderView setBackgroundColor:[Constants StatusTableBackgroundColor]];
+    borderView.tag = 200;
+    [self.tabBarController.tabBar addSubview:borderView];
+    
+    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    addButton.frame = CGRectMake(self.tabBarController.tabBar.frame.size.width / 2.0 - 20, 0, 40, 40);
+    [addButton setImage:[UIImage imageNamed:@"Main_Add"] forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(addNewActivity:) forControlEvents:UIControlEventTouchUpInside];
+    addButton.tag = 100;
+    [self.tabBarController.tabBar addSubview:addButton];
+    [self.bottomView setBackgroundColor:[Constants StatusTableBackgroundColor]];
+    self.bottomView.layer.masksToBounds = YES;
+    self.bottomView.layer.cornerRadius = self.bottomView.frame.size.width / 2.0;
 }
 
 #pragma mark - Table view data source
@@ -46,24 +86,10 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.hidesBackButton = YES;
+    self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = NO;
-    [self.view layoutIfNeeded];
-    CGFloat width = self.addHangoutView.frame.size.width / 2;
-    UIImageView *addImage = [[UIImageView alloc] initWithFrame:CGRectMake(width - 15, 5, 30, 30)];
-    [addImage setImage:[UIImage imageNamed:@"add"]];
-    [self.addHangoutView addSubview:addImage];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width - 50, addImage.frame.origin.y + 30, 100, 20)];
-    [label setText:@"New Activity"];
-    [label setTextColor:[Constants AddActivityFontColor]];
-    [label setTextAlignment:NSTextAlignmentCenter];
-    [self.addHangoutView addSubview:label];
-    
-    [self.view setNeedsLayout];
-    
+    [self AddButtonForTabbar];
+    [self.view layoutIfNeeded];    
 }
 
 
@@ -74,46 +100,73 @@
     HangoutSWTableCell *cell = [self.hangoutView  dequeueReusableCellWithIdentifier:identifier];
     if (cell != nil)
     {
-        [cell.activityImage setImage:[UIImage imageNamed:@"dinner-22"]];
-        [cell.avatorImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"xiaowu"]];
-        [cell.borderView setBackgroundColor:[Constants MainPageBorderColor]];
-        
-        [cell.userNameLabel setText: @"奥迪哥"];
-        [cell.userNameLabel setTextColor:[Constants MainPageFontColor]];
-        
+        NSString *activityName;
+        NSString *avator;
+        NSString *user;
+        NSString *time;
+            
         [cell.topicLabel1 setText: @"Today is my birthday"];
         [cell.topicLabel1 setTextColor:[Constants MainPageFontColor]];
-        
+            
         [cell.topicLabel2 setText: @"Today is my birthday"];
         [cell.topicLabel2 setTextColor:[Constants MainPageFontColor]];
         
-        [cell.schedule setText: @"10/28"];
-        
-        cell.rightUtilityButtons = [self rightButtons];
-        
-        cell.delegate = self;
+        [cell.borderView setBackgroundColor:[Constants StatusTableBackgroundColor]];
         
         switch (indexPath.section) {
-            case 0:
-                [cell.activityImage setBackgroundColor:[Constants OrangeBackgroundColor]];
-                break;
-            case 1:
-                [cell.activityImage setBackgroundColor:[Constants ActivityGreenBackground]];
-                break;
-            case 2:
-                [cell.activityImage setBackgroundColor:[Constants ActivityGreenBackground]];
-                break;
-            case 3:
-                [cell.activityImage setBackgroundColor:[Constants RedBackgroundColor]];
-                break;
-            case 4:
-                [cell.activityImage setBackgroundColor:[Constants GrayBackgroundColor]];
-                break;
-            default:
-                [cell.activityImage setBackgroundColor:[Constants OrangeBackgroundColor]];
-                break;
+                case 0:
+                    activityName = @"Activity_Dinner";
+                    avator = @"Sample_Audi.jpg";
+                    user = @"奥迪哥";
+                    time = @"10/28";
+                    [cell.activityImage setBackgroundColor:[Constants OrangeBackgroundColor]];
+                    break;
+                case 1:
+                    activityName = @"Activity_Coffee";
+                    avator = @"Sample_Achie.jpg";
+                    user = @"阿屌丝";
+                    time = @"3 hours left";
+                    [cell.activityImage setBackgroundColor:[Constants GreenBackgroundColor]];
+                    break;
+                case 2:
+                    activityName = @"Activity_Movie";
+                    avator = @"Sample_Glass.jpg";
+                    user = @"so姐姐";
+                    time = @"10/23";
+                    [cell.activityImage setBackgroundColor:[Constants GreenBackgroundColor]];
+                    break;
+                case 3:
+                    activityName = @"Activity_KTV";
+                    avator = @"Sample_Rae.jpg";
+                    user = @"瑞娥";
+                    time = @"9/18";
+                    [cell.activityImage setBackgroundColor:[Constants RedBackgroundColor]];
+                    break;
+                case 4:
+                    activityName = @"Activity_Shower";
+                    avator = @"Sample_Sofang.jpg";
+                    user = @"方圆";
+                    time = @"4/28";
+                    [cell.activityImage setBackgroundColor:[Constants MainPageCancelColor]];
+                    break;
+                default:
+                    activityName = @"Activity_Shopping";
+                    avator = @"xiaowu";
+                    user = @"吴母牛";
+                    time = @"2/17";
+                    [cell.activityImage setBackgroundColor:[Constants MainPageCancelColor]];
+                    break;
         }
+            
+        [cell.activityImage setImage:[UIImage imageNamed:activityName]];
+        [cell.userNameLabel setText: user];
         
+        [cell.userNameLabel setTextColor:[Constants MainPageFontColor]];
+        [cell.schedule setText: time];
+        [cell.avatorImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:avator]];
+        [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:45];
+        
+        cell.delegate = self;
     }
     return cell;
 }
@@ -123,14 +176,14 @@
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [Constants SWButtonBackgroundColor]
-                                                icon:[UIImage imageNamed:@"rightAccept"]];
+     [Constants GreenBackgroundColor]
+                                                icon:[UIImage imageNamed:@"Main_Accept_Temp"]];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [Constants SWButtonBackgroundColor]
-                                                icon:[UIImage imageNamed:@"rightAccept"]];
+     [Constants RedBackgroundColor]
+                                                icon:[UIImage imageNamed:@"Main_Cancel_Temp"]];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [Constants SWButtonBackgroundColor]
-                                                icon:[UIImage imageNamed:@"rightAccept"]];
+     [Constants MainPageCancelColor]
+                                                icon:[UIImage imageNamed:@"Main_Trash_Temp"]];
     return rightUtilityButtons;
 }
 
@@ -138,8 +191,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [self.hangoutView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"HangoutDetails" sender:self];
 }
 
+-(void) addNewActivity: (UIButton *) sender
+{
+    NSLog(@"Add New Activity");
+    [self performSegueWithIdentifier:@"NewActivity" sender:self];
+}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

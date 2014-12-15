@@ -12,17 +12,17 @@
 
 +(UIColor*) GreenFrontendColor
 {
-    return [UIColor colorWithRed:63.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:100.0/255.0 green:189.0/255.0 blue:120.0/255.0 alpha:1.0];
 }
 
 +(UIColor*) GreenBackgroundColor
 {
-    return [UIColor colorWithRed:70.0/255.0 green:206.0/255.0 blue:180.0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:109.0/255.0 green:206.0/255.0 blue:131.0/255.0 alpha:1.0];
 }
 
 +(UIColor*) GreenBorderColor
 {
-    return [UIColor colorWithRed:128.0/255.0 green:223.0/255.0 blue:209.0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:175.0/255.0 green:221.0/255.0 blue:186.0/255.0 alpha:1.0];
 }
 
 +(UIColor*) ActivityGreenBackground
@@ -66,6 +66,16 @@
     return [UIColor colorWithRed:252.0/255.0 green:175.0/255.0 blue:72.0/255.0 alpha:1.0];
 }
 
++(UIColor*) OrangeFrontendColor
+{
+    return [UIColor colorWithRed:235/255.0 green:176.0/255.0 blue:28.0/255.0 alpha:1.0];
+}
+
++(UIColor*) OrangeBorderColor
+{
+    return [UIColor colorWithRed:226.0/255.0 green:198.0/255.0 blue:132.0/255.0 alpha:1.0];
+}
+
 +(UIColor*) StatusTableBackgroundColor
 {
     return [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
@@ -96,11 +106,15 @@
     return [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
 }
 
-
-
 +(UIColor*) SWButtonBackgroundColor
 {
     return [UIColor colorWithRed:77.0/255.0 green:77.0/255.0 blue:77.0/255.0 alpha:1.0];
+}
+
++(UIColor*) MainPageCancelColor
+{
+    return [UIColor colorWithRed:64.0/255.0 green:73.0/255.0 blue:83.0/255.0 alpha:1.0];
+
 }
 
 

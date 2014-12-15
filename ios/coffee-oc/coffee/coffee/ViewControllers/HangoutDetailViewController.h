@@ -19,14 +19,27 @@
 @property (nonatomic, retain) IBOutlet UIView *detailView;
 @property(nonatomic, retain) IBOutlet UIView *activityDetailView;
 @property(nonatomic, retain) IBOutlet CFAvatarView *avatorImageView;
-@property(nonatomic, retain) IBOutlet UIImageView *acceptActionButtonView;
-@property(nonatomic, retain) IBOutlet UIImageView *cancelActionButtonView;
 @property(nonatomic, retain) IBOutlet SwipeView* swipeView;
 @property(nonatomic, retain) IBOutlet UITableView* activityStatusTableView;
 @property(nonatomic, retain) IBOutlet UIView *activityActionView;
 @property(nonatomic, retain) IBOutlet UILabel *locationLabel;
-@property(nonatomic, retain) IBOutlet UIImageView *lbsView;
-@property(nonatomic, retain) IBOutlet UIImageView *statusImageView;
+
+@property(nonatomic, strong) IBOutlet CFAvatarView *postAvator;
+@property(nonatomic, strong) IBOutlet UIView *postBackgroundView;
+@property(nonatomic, strong) IBOutlet UITextField *postText;
+
+@property(nonatomic, strong) IBOutlet UIButton *firstButton;
+@property(nonatomic, strong) IBOutlet UIButton *secondButton;
+@property(nonatomic, strong) IBOutlet UIButton *thirdButton;
+@property(nonatomic, strong) IBOutlet UIView *actionBorder;
+@property(nonatomic, strong) IBOutlet UILabel* countdownLabel;
+
+@property(nonatomic, strong) IBOutlet UIButton *leftButton;
+@property(nonatomic, strong) IBOutlet UIButton *rightButton;
+@property(nonatomic, strong) IBOutlet UILabel* leftLabel;
+@property(nonatomic, strong) IBOutlet UILabel* rightLabel;
+@property(nonatomic, strong) IBOutlet UILabel* addressLabel;
+@property(nonatomic, strong) IBOutlet UIButton* addressButton;
 
 
 @end

@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "HangoutSWTableCell.h"
 #import "SWTableViewCell.h"
+#import "CFAvatarView.h"
 
 @interface HangoutViewControllerV2 : UIViewController<UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate>
 
-
-@property(nonatomic, strong) IBOutlet UIButton * addHangoutView;
 @property(nonatomic, strong) IBOutlet UITableView * hangoutView;
-@property(nonatomic, strong) IBOutlet UILabel* addHangoutLabel;
-
+@property(nonatomic, strong) IBOutlet CFAvatarView* personalAvator;
+@property(nonatomic, strong) IBOutlet UILabel* userName;
+@property(nonatomic, strong) IBOutlet UIView *bottomView;
 @end

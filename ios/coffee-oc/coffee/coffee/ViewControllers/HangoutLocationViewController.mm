@@ -7,7 +7,7 @@
 //
 
 #import "HangoutLocationViewController.h"
-#import "Location.h"
+#import "Placeholder.h"
 
 @interface HangoutLocationViewController ()
 
@@ -16,9 +16,6 @@
 
 @implementation HangoutLocationViewController
 
-@synthesize searchBar;
-@synthesize mapView = _mapView;
-@synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +31,11 @@
     _mapView.isSelectedAnnotationViewFront = YES;
     
     [_mapView setZoomLevel:13];
+    
+    [self.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.okButton addTarget:self action:@selector(okButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     // Do any additional setup after loading the view.
     
 }
@@ -87,36 +89,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void) initTableView{
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    self.tableView.separatorColor = [UIColor lightGrayColor];
-    
-}
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return searchLocation.locations.count;
-}
-
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifier = @"LocationCell";
-    LocationTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell) {
-        Location *item = (Location *)searchLocation.locations[indexPath.row];
-        [cell.locationImage setImage:[UIImage imageNamed:@"xsq"]];
-        [cell.titleLabel setText: item.title];
-        [cell.addressLabel setText: item.address];
-    }
-    return cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
-}
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -209,8 +182,6 @@
     } else {
         // 各种情况的判断。。。
     }
-    
-    [tableView reloadData];
 }
 
 /*搜索按钮*/
@@ -250,6 +221,17 @@
 {
     [self.searchBar resignFirstResponder];
 }
+
+-(void) backButtonClick: (UIButton *) sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) okButtonClick: (UIButton *) sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 /*
 #pragma mark - Navigation

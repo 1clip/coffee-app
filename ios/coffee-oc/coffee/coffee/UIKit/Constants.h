@@ -24,6 +24,8 @@
 +(UIColor*) GrayBorderColor;
 
 +(UIColor*) OrangeBackgroundColor;
++(UIColor*) OrangeFrontendColor;
++(UIColor*) OrangeBorderColor;
 
 
 +(UIColor*) ActivityGreenBackground;
@@ -40,5 +42,8 @@
 +(UIColor*) InviteFriendBorderColor;
 
 +(UIColor*) SWButtonBackgroundColor;
+
+
++(UIColor*) MainPageCancelColor;
 
 @end
