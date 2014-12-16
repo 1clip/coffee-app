@@ -111,13 +111,11 @@ static int RandomInt(int max) {
     for (int i=0; i < numParticipator; ++i) {
         [hangout.participators addObject:[self participator]];
     }
-    
     return hangout;
 }
 
 +(Participator*) participator {
     Participator* participator = [[Participator alloc] init];
-    
     participator.id = [self randomIdWithType:IdTypeUser];
     
     return participator;

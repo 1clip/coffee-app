@@ -8,7 +8,7 @@
 
 #import "HangoutInvationViewController.h"
 #import "CFAvatarView.h"
-#import "Constants.h"
+#import "ViewEnums.h"
 #import "Placeholder.h"
 #import "NewActivityViewControllerV2.h"
 
@@ -74,12 +74,12 @@ bool expandCell;
     if(cell.detailsView.hidden == NO)
     {
         [self ProcessSwipeView:cell];
-        [cell.detailsView setBackgroundColor:[Constants StatusTableBackgroundColor]];
+        [cell.detailsView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
     }
     [cell.groupName setFont:[UIFont systemFontOfSize:18]];
     cell.countView.layer.masksToBounds = YES;
     cell.countView.layer.cornerRadius = cell.countView.frame.size.height / 2.0;
-    [cell.countView setBackgroundColor:[Constants GreenBackgroundColor]];
+    [cell.countView setBackgroundColor:[CoffeeUIColor AcceptColor]];
     [cell.countLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:20]];
     switch (indexPath.row) {
         case 0:
@@ -159,7 +159,7 @@ bool expandCell;
         //item view, if different items have different contents, ignore the reusingView value
         CGFloat height = 50;
         view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, height + 10, expandSwipView.frame.size.height)];
-        [view setBackgroundColor:[Constants StatusTableBackgroundColor]];
+        [view setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
         
         CFAvatarView *avator = [[CFAvatarView alloc] initWithFrame:CGRectMake(5.0, (expandSwipView.frame.size.height - height) / 2 - 5, height, height)];
         UIColor *bg = [UIColor whiteColor];

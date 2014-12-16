@@ -9,52 +9,29 @@
 #import "HangoutDetailViewController.h"
 #import "UITableGridViewCell.h"
 #import "ActivityReplyViewCell.h"
-#import "Constants.h"
-
+#import "ViewEnums.h"
+#import "DataModels.h"
+#import "HangoutHelper.h"
+#import "UIHelper.h"
 
 @implementation HangoutDetailViewController
 
+HangoutHelper *hangoutHelper;
+User* currentUser;
+long currentHangoutId;
+Hangout* currentHangout;
+HangoutSummary* currentHangoutSummary;
+Participator *participator;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initTableView];
-    [self.activityDetailView setBackgroundColor:[Constants OrangeBackgroundColor]];
-    [self.actionBorder setBackgroundColor:[Constants OrangeFrontendColor]];
-    [self.avatorImageView setBorderColor:[Constants OrangeBorderColor]];
-    [self.activityImage setBackgroundColor:[Constants OrangeFrontendColor]];
-    [self.detailView setBackgroundColor:[Constants OrangeFrontendColor]];
-    [self.addressButton setBackgroundImage:[UIImage imageNamed:@"Address_Pending"] forState:UIControlStateNormal];
     
-    [self.swipeView setBackgroundColor:[Constants StatusTableBackgroundColor]];
-    self.swipeView.alignment = SwipeViewAlignmentEdge;
-    self.swipeView.pagingEnabled = YES;
-    self.swipeView.truncateFinalPage = YES;
+    [self LoadData];
+    [self InitDetailView];
+    [self InitActionView];
+    [self InitStatusView];
+    [self InitPostView];
     
-    [self.postBackgroundView setBackgroundColor:[Constants StatusTableBackgroundColor]];
-    [self.postAvator setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"Sample_Rae.jpg"]];
-    
-    
-    self.leftButton.tag = 1;
-    [self.leftButton addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.leftLabel setTextColor:[Constants GreenBackgroundColor]];
-    
-    self.rightButton.tag = 1;
-    [self.rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.rightLabel setTextColor:[Constants RedBackgroundColor]];
-    
-    
-    
-    self.addressLabel.hidden = YES;
-    self.addressButton.hidden = YES;
-    [self.addressLabel setText:@"Zizhu Campus Building 01\nNo.999 Zixing Road, China"];
-    
-    
-    [self.firstButton addTarget:self action:@selector(actionButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.secondButton addTarget:self action:@selector(addressButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-
-    
-    [self.thirdButton addTarget:self action:@selector(editButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -62,21 +39,12 @@
     self.tabBarController.tabBar.hidden = YES;
     
     [self.view layoutIfNeeded];
-    [self.activityImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"Dinner_Big"]];
-    
+    [self.activityImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:[UIHelper MapActivePureImage:currentHangout.activity]]];
     
     _detailView.layer.masksToBounds = YES;
     _detailView.layer.cornerRadius = _detailView.frame.size.height / 2.0;
     
-    
-    _locationLabel.text = @"Today is my Birthday!\nLet's have dinner";
-    _locationLabel.textColor = [UIColor whiteColor];
-    _locationLabel.backgroundColor = [UIColor clearColor];
-    _locationLabel.font = [UIFont systemFontOfSize:10];
-    _locationLabel.textAlignment = NSTextAlignmentLeft;
-    _locationLabel.numberOfLines = 2;
-    
-    [_avatorImageView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"Sample_Rae.jpg"]];
+    [_avatorImageView setImageWithURL:nil placeholderImage:[UIImage imageNamed:currentHangoutSummary.organizer.avatarInfo.imageUrl]];
     [_avatorImageView setBorderWidth:2.0];
     
 }
@@ -91,10 +59,68 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) LoadData
+{
+    hangoutHelper = [[HangoutHelper alloc] init];
+    currentHangout = [hangoutHelper GetHangoutDetails:currentHangoutId];
+    currentHangoutSummary = [hangoutHelper GetHangoutSummaryById:currentHangoutId];
+    currentUser = [hangoutHelper GetCurrentUser];
+    participator = [HangoutHelper FindParticipatorByUserId:currentHangout UserId:currentUser.id];
 
-- (void) initTableView{
-    self.activityStatusTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
+
+-(void) LoadHangout:(long)hangoutId
+{
+    currentHangoutId = hangoutId;
+}
+
+-(void) InitDetailView
+{
+    [self.activityDetailView setBackgroundColor: currentHangoutSummary.state == [HangoutState Active] ? [UIHelper GetBackgroundColorByParticateState:participator.state] : [CoffeeUIColor OverdueBorderColor]];
+    [self.actionBorder setBackgroundColor:[CoffeeUIColor BlackColorForAlpha]];
+    [self.avatorImageView setBorderColor:[UIHelper GetBorderColorByParticateState:participator.state]];
+    [self.detailView setBackgroundColor:[CoffeeUIColor BlackColorForAlpha]];
+    
+    
+    
+    self.locationLabel.text = currentHangout.subject;
+    self.locationLabel.numberOfLines = 2;
+    
+    [self.firstButton addTarget:self action:@selector(DetailView_ActionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.secondButton addTarget:self action:@selector(DetailView_AddressButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.thirdButton addTarget:self action:@selector(DetailView_EditButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
+
+}
+
+-(void) InitActionView
+{
+    
+    [self setActionView:[UIHelper ConvertToParticipatorEnum:participator.state]];
+    [self.addressButton setBackgroundImage:[UIHelper FindAddressButtonImage:participator.state] forState:UIControlStateNormal];
+    self.addressLabel.hidden = YES;
+    self.addressButton.hidden = YES;
+    [self.addressLabel setText:currentHangout.location];
+    
+}
+
+-(void) InitStatusView
+{
+    [self.swipeView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
+    self.swipeView.alignment = SwipeViewAlignmentEdge;
+    self.swipeView.pagingEnabled = YES;
+    self.swipeView.truncateFinalPage = YES;
+}
+
+-(void) InitPostView
+{
+    
+    [self.postBackgroundView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
+    [self.postAvator setImageWithURL:nil placeholderImage:[UIImage imageNamed:currentUser.avatarInfo.imageUrl]];
+
+}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -139,7 +165,7 @@
     //normally we'd use a backing array
     //as shown in the basic iOS example
     //but for this example we haven't bothered
-    return 6;
+    return currentHangout.participators.count;
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -152,52 +178,20 @@
         //item view, if different items have different contents, ignore the reusingView value
         CGFloat height = self.leftButton.frame.size.height;
         view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, height + 15.0, self.swipeView.frame.size.height)];
-        [view setBackgroundColor:[Constants StatusTableBackgroundColor]];
+        [view setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
 
         CFAvatarView *avator = [[CFAvatarView alloc] initWithFrame:CGRectMake(5.0, (self.swipeView.frame.size.height - height) / 2 - 5, height, height)];
         UIColor *bg = [UIColor whiteColor];
-        NSString *imageName = @"Sample_Audi";
-        NSString *badgeName = @"Deatails_Accept";
-        NSString *userName = @"奥迪哥";
-        switch(index)
-        {
-            case 0:
-                imageName = @"Sample_Rae.jpg";
-                badgeName = @"Details_Accept";
-                userName = @"瑞娥";
-                break;
-            case 1:
-                imageName = @"Sample_Audi.jpg";
-                badgeName = @"Details_Accept";
-                userName = @"奥迪哥";
-                break;
-            case 2:
-                imageName = @"Sample_Achie.jpg";
-                badgeName = @"Details_Accept";
-                userName = @"阿屌丝";
-                break;
-            case 3:
-                imageName = @"Sample_Sofang.jpg";
-                badgeName = @"Details_Pending";
-                userName = @"方圆";
-                break;
-            case 4:
-                imageName = @"Sample_Glass.jpg";
-                badgeName = @"Details_Pending";
-                userName = @"So姐姐";
-                break;
-            case 5:
-                imageName = @"xiaowu";
-                badgeName = @"Details_Cancel";
-                userName = @"吴母牛";
-                break;
-        }
-        [avator setImageWithURL: nil placeholderImage:[UIImage imageNamed:imageName] badgeImage:[UIImage imageNamed:badgeName]];
+        
+        Participator * par = currentHangout.participators[index];
+        User *user = [hangoutHelper GetUserById:par.id];
+        
+        [avator setImageWithURL: nil placeholderImage:[UIImage imageNamed:par.avatarInfo.imageUrl] badgeImage:[UIHelper FindBadgeImageByStatus:par.state]];
         [avator setBorderColor:bg];
         [avator setBorderWidth:2.0];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(avator.frame.origin.x, avator.frame.origin.y + avator.frame.size.height + 2.5, height, 10)];
-        [label setText:userName];
+        [label setText:user.friendlyName];
         [label setFont:[UIFont systemFontOfSize:11]];
         [label setTextAlignment:NSTextAlignmentCenter];
         [view addSubview:avator];
@@ -210,58 +204,46 @@
 #pragma mark -
 #pragma mark Control events
 
-- (void)takeAction: (UITapGestureRecognizer *)sender
+-(void) ChangeParticipateState:(HangoutParticipatorState) action
 {
-    /*CGPoint touchPoint = [sender locationInView:_activityActionView];
-    if(touchPoint.x >= self.acceptActionButtonView.frame.origin.x && touchPoint.x <= self.acceptActionButtonView.frame.origin.x + self.acceptActionButtonView.frame.size.width && touchPoint.y >= self.acceptActionButtonView.frame.origin.y && touchPoint.y <= self.acceptActionButtonView.frame.origin.y + self.acceptActionButtonView.frame.size.height)
+    //Todo:Call api to update the particator state
+    
+    
+    NSString *state;
+    
+    switch(action)
     {
-        //[self.statusImageView setImage:[UIImage imageNamed:@"cancel_white-22"]];
-        [self.activityDetailView setBackgroundColor:[Constants RedBackgroundColor]];
-        [self.activityImage setBackgroundColor:[Constants RedFrontendColor]];
-        [self.avatorImageView setBorderColor:[Constants RedBorderColor]];
-        [self.detailView setBackgroundColor:[Constants RedFrontendColor]];
-        [self hideActionView];
+        case Accept:
+            [self.activityDetailView setBackgroundColor:[CoffeeUIColor AcceptColor]];
+            [self.avatorImageView setBorderColor:[CoffeeUIColor AcceptBorderColor]];
+            state = [ParticipatorState Accept];
+            break;
+        case Pending:
+            [self.activityDetailView setBackgroundColor:[CoffeeUIColor PendingColor]];
+            [self.avatorImageView setBorderColor:[CoffeeUIColor PendingBorderColor]];
+            state = [ParticipatorState Pending];
+            break;
+        case Cancel:
+            [self.activityDetailView setBackgroundColor:[CoffeeUIColor CancelColor]];
+            [self.avatorImageView setBorderColor:[CoffeeUIColor CancelBorderColor]];
+            state = [ParticipatorState Reject];
+            break;
+        case Unknown:
+            break;
     }
     
-    if(touchPoint.x >= self.cancelActionButtonView.frame.origin.x && touchPoint.x <= self.cancelActionButtonView.frame.origin.x + self.cancelActionButtonView.frame.size.width && touchPoint.y >= self.cancelActionButtonView.frame.origin.y && touchPoint.y <= self.cancelActionButtonView.frame.origin.y + self.cancelActionButtonView.frame.size.height)
-    {
-        //[self.statusImageView setImage:[UIImage imageNamed:@"cancel_white-22"]];
-        [self.activityDetailView setBackgroundColor:[Constants GrayBackgroundColor]];
-        [self.activityImage setBackgroundColor:[Constants GrayFrontendColor]];
-        [self.detailView setBackgroundColor:[Constants GrayFrontendColor]];
-        [self.avatorImageView setBorderColor:[Constants GrayBorderColor]];
-        [self hideActionView];
-    }*/
+    
+    [HangoutHelper FindParticipatorByUserId:currentHangout UserId:currentUser.id].state = state;
+    
+    [self.addressButton setBackgroundImage:[UIImage imageNamed:@"AddressButton"] forState:UIControlStateNormal];
+    [self hideActionView];
 }
 
--(void) leftButtonAction:(UIButton *) sender
+-(void) ActionButtonClick:(UIButton *) sender
 {
-    if(self.leftButton.tag == 1) //accept
-    {
-        [self.activityDetailView setBackgroundColor:[Constants GreenBackgroundColor]];
-        [self.activityImage setBackgroundColor:[Constants GreenFrontendColor]];
-        [self.avatorImageView setBorderColor:[Constants GreenBorderColor]];
-        [self.detailView setBackgroundColor:[Constants GreenFrontendColor]];
-        [self.actionBorder setBackgroundColor:[Constants GreenFrontendColor]];
-        
-        [self.addressButton setBackgroundImage:[UIImage imageNamed:@"AddressButton"] forState:UIControlStateNormal];
-        [self hideActionView];
-
-    }
-}
-
--(void) rightButtonAction:(UIButton *) sender
-{
-    if(self.rightButton.tag == 1) //cancel
-    {
-        [self.activityDetailView setBackgroundColor:[Constants RedBackgroundColor]];
-        [self.activityImage setBackgroundColor:[Constants RedFrontendColor]];
-        [self.avatorImageView setBorderColor:[Constants RedBorderColor]];
-        [self.detailView setBackgroundColor:[Constants RedFrontendColor]];
-        [self.actionBorder setBackgroundColor:[Constants RedFrontendColor]];
-        [self hideActionView];
-        
-    }
+    HangoutParticipatorState state = sender.tag;
+    [self ChangeParticipateState:state];
+    [self.swipeView reloadData];
 }
 
 
@@ -326,15 +308,22 @@
 
 }
 
--(void) addressButtonAction:(UIButton *) sender
+-(void) DetailView_AddressButtonClick:(UIButton *) sender
 {
     [self displayActionContent:YES];
 }
 
--(void) actionButtonAction:(UIButton *) sender
+-(void) DetailView_ActionButtonClick:(UIButton *) sender
 {
+    [self setActionView:[UIHelper ConvertToParticipatorEnum:[HangoutHelper FindParticipatorByUserId:currentHangout UserId:currentUser.id].state]];
     [self displayActionContent:NO];
 }
+
+-(void) DetailView_EditButtonClick:(UIButton *) sender
+{
+    [self performSegueWithIdentifier:@"NewActivity" sender:self];
+}
+
 
 -(void) displayActionContent: (bool) displayAddress
 {
@@ -352,9 +341,60 @@
 
 }
 
--(void) editButtonAction:(UIButton *) sender
+-(void) setActionButton:(UIButton*) button Title:(UILabel*) label Participate:(HangoutParticipatorState) state
 {
-    [self performSegueWithIdentifier:@"NewActivity" sender:self];
+    button.tag = state;
+    switch(state)
+    {
+        case Accept:
+            [button setImage:[UIImage imageNamed:@"Details_Accept_Big"] forState:UIControlStateNormal];
+            [label setTextColor:[CoffeeUIColor AcceptColor]];
+            [label setText:@"Accept"];
+            break;
+        case Pending:
+            [button setImage:[UIImage imageNamed:@"Details_Pending_Big"] forState:UIControlStateNormal];
+            [label setTextColor:[CoffeeUIColor PendingColor]];
+            [label setText:@"Pending"];
+            break;
+        case Cancel:
+            [button setImage:[UIImage imageNamed:@"Details_Cancel_Big"] forState:UIControlStateNormal];
+            [label setTextColor:[CoffeeUIColor CancelColor]];
+            [label setText:@"Cancel"];
+            break;
+        case Unknown:
+            break;
+    }
+
+}
+
+-(void) setActionView:(HangoutParticipatorState) hangoutState
+{
+    
+    [self.leftButton addTarget:self action:@selector(ActionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightButton addTarget:self action:@selector(ActionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    HangoutParticipatorState leftState;
+    HangoutParticipatorState rightState;
+    switch(hangoutState)
+    {
+        case Accept:
+            leftState = Pending;
+            rightState = Cancel;
+            break;
+        case Pending:
+            leftState = Accept;
+            rightState = Cancel;
+            break;
+        case Cancel:
+            leftState = Accept;
+            rightState = Pending;
+            break;
+        case Unknown:
+            break;
+    }
+    
+    [self setActionButton:self.leftButton Title:self.leftLabel Participate:leftState];
+    [self setActionButton:self.rightButton Title:self.rightLabel Participate:rightState];
+
 }
 
 /*

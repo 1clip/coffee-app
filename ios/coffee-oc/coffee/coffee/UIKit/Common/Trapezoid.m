@@ -7,7 +7,7 @@
 //
 
 #import "Trapezoid.h"
-#import "Constants.h"
+#import "ViewEnums.h"
 
 @implementation Trapezoid
 
@@ -51,7 +51,7 @@
     CGContextClosePath(context);//收拢， 做成直角梯形
     
     
-    [[Constants StatusTableBackgroundColor] setFill];
+    [[CoffeeUIColor GrayBackgroundColor] setFill];
     
     
     CGContextDrawPath(context, kCGPathFill);

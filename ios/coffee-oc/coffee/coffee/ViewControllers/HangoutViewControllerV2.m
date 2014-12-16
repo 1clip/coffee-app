@@ -7,13 +7,23 @@
 //
 
 #import "HangoutViewControllerV2.h"
-#import "Constants.h"
+#import "ViewEnums.h"
+#import "FakeData.h"
+#import "UIHelper.h"
+#import "HangoutHelper.h"
+#import "HangoutDetailViewController.h"
 
 @interface HangoutViewControllerV2 ()
 
 @end
 
 @implementation HangoutViewControllerV2
+
+NSMutableArray<HangoutSummary> *activeHangout;
+NSMutableArray<HangoutSummary> *overdueHangout;
+User *currentUser;
+HangoutHelper *hangoutHelper;
+long selectHangoutId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,11 +32,19 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     [self InitTabBar];
-    [self.personalAvator setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"Sample_Rae.jpg"]];
-    [self.userName setText:@"Rae911211"];
+    [self LoadData];
+    [self.personalAvator setImageWithURL:nil placeholderImage:[UIImage imageNamed:currentUser.avatarInfo.imageUrl]];
+    [self.userName setText:currentUser.loginName];
     
+}
+
+-(void)LoadData
+{
+    hangoutHelper = [[HangoutHelper alloc] init];
+    currentUser = [hangoutHelper GetCurrentUser];
+    activeHangout = [hangoutHelper GetActiveHangoutSummary];
+    overdueHangout = [hangoutHelper GetOverdueHangoutSummary];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +55,7 @@
 -(void)InitTabBar
 {
     
-    self.tabBarController.tabBar.barTintColor = [Constants StatusTableBackgroundColor];
+    self.tabBarController.tabBar.barTintColor = [CoffeeUIColor GrayBackgroundColor];
 }
 
 -(void)AddButtonForTabbar
@@ -54,7 +72,7 @@
     
     
     UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0, -2, self.tabBarController.tabBar.frame.size.width, 3)];
-    [borderView setBackgroundColor:[Constants StatusTableBackgroundColor]];
+    [borderView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
     borderView.tag = 200;
     [self.tabBarController.tabBar addSubview:borderView];
     
@@ -64,15 +82,16 @@
     [addButton addTarget:self action:@selector(addNewActivity:) forControlEvents:UIControlEventTouchUpInside];
     addButton.tag = 100;
     [self.tabBarController.tabBar addSubview:addButton];
-    [self.bottomView setBackgroundColor:[Constants StatusTableBackgroundColor]];
+    [self.bottomView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
     self.bottomView.layer.masksToBounds = YES;
     self.bottomView.layer.cornerRadius = self.bottomView.frame.size.width / 2.0;
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {    // Return the number of sections.
-    return 6;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return activeHangout.count + overdueHangout.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -100,73 +119,32 @@
     HangoutSWTableCell *cell = [self.hangoutView  dequeueReusableCellWithIdentifier:identifier];
     if (cell != nil)
     {
-        NSString *activityName;
-        NSString *avator;
-        NSString *user;
-        NSString *time;
-            
-        [cell.topicLabel1 setText: @"Today is my birthday"];
-        [cell.topicLabel1 setTextColor:[Constants MainPageFontColor]];
-            
-        [cell.topicLabel2 setText: @"Today is my birthday"];
-        [cell.topicLabel2 setTextColor:[Constants MainPageFontColor]];
+        HangoutSummary *hangoutSummary = indexPath.section < activeHangout.count ? activeHangout[indexPath.section]:overdueHangout[indexPath.section - activeHangout.count];
+        Hangout *hangout = [hangoutHelper GetHangoutDetails:hangoutSummary.id];
+        Participator *myState = [HangoutHelper FindParticipatorByUserId:hangout UserId:currentUser.id];
+        NSString *avator = hangoutSummary.organizer.avatarInfo.imageUrl;
         
-        [cell.borderView setBackgroundColor:[Constants StatusTableBackgroundColor]];
-        
-        switch (indexPath.section) {
-                case 0:
-                    activityName = @"Activity_Dinner";
-                    avator = @"Sample_Audi.jpg";
-                    user = @"奥迪哥";
-                    time = @"10/28";
-                    [cell.activityImage setBackgroundColor:[Constants OrangeBackgroundColor]];
-                    break;
-                case 1:
-                    activityName = @"Activity_Coffee";
-                    avator = @"Sample_Achie.jpg";
-                    user = @"阿屌丝";
-                    time = @"3 hours left";
-                    [cell.activityImage setBackgroundColor:[Constants GreenBackgroundColor]];
-                    break;
-                case 2:
-                    activityName = @"Activity_Movie";
-                    avator = @"Sample_Glass.jpg";
-                    user = @"so姐姐";
-                    time = @"10/23";
-                    [cell.activityImage setBackgroundColor:[Constants GreenBackgroundColor]];
-                    break;
-                case 3:
-                    activityName = @"Activity_KTV";
-                    avator = @"Sample_Rae.jpg";
-                    user = @"瑞娥";
-                    time = @"9/18";
-                    [cell.activityImage setBackgroundColor:[Constants RedBackgroundColor]];
-                    break;
-                case 4:
-                    activityName = @"Activity_Shower";
-                    avator = @"Sample_Sofang.jpg";
-                    user = @"方圆";
-                    time = @"4/28";
-                    [cell.activityImage setBackgroundColor:[Constants MainPageCancelColor]];
-                    break;
-                default:
-                    activityName = @"Activity_Shopping";
-                    avator = @"xiaowu";
-                    user = @"吴母牛";
-                    time = @"2/17";
-                    [cell.activityImage setBackgroundColor:[Constants MainPageCancelColor]];
-                    break;
-        }
+        [cell.activityImage setBackgroundColor: (hangoutSummary.state == [HangoutState Active]) ? [UIHelper GetBackgroundColorByParticateState:myState.state] : [CoffeeUIColor OverdueColor]];
+        [cell.topicLabel1 setText: hangoutSummary.subject];
+        [cell.topicLabel1 setTextColor:[CoffeeUIColor MainPageFontColor]];
             
-        [cell.activityImage setImage:[UIImage imageNamed:activityName]];
-        [cell.userNameLabel setText: user];
+        [cell.topicLabel2 setText: hangoutSummary.subject];
+        [cell.topicLabel2 setTextColor:[CoffeeUIColor MainPageFontColor]];
         
-        [cell.userNameLabel setTextColor:[Constants MainPageFontColor]];
-        [cell.schedule setText: time];
+        [cell.borderView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
+        
+        
+        [cell.activityImage setImage:[UIImage imageNamed:[UIHelper MapActiveImage:hangoutSummary.activity]]];
+        [cell.userNameLabel setText: hangoutSummary.organizer.friendlyName];
+        
+        [cell.userNameLabel setTextColor:[CoffeeUIColor MainPageFontColor]];
+        [cell.schedule setText: [NSString stringWithFormat:@"%@", [UIHelper DisplayHangoutDate:hangout.startTime]]];
         [cell.avatorImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:avator]];
-        [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:45];
+        [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:50];
         
         cell.delegate = self;
+        
+        cell.tag = hangout.id;
     }
     return cell;
 }
@@ -176,14 +154,14 @@
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [Constants GreenBackgroundColor]
-                                                icon:[UIImage imageNamed:@"Main_Accept_Temp"]];
+     [CoffeeUIColor AcceptColor]
+                                                icon:[UIImage imageNamed:@"Main_RightButton_Accept"]];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [Constants RedBackgroundColor]
-                                                icon:[UIImage imageNamed:@"Main_Cancel_Temp"]];
+     [CoffeeUIColor CancelColor]
+                                                icon:[UIImage imageNamed:@"Main_RightButton_Cancel"]];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [Constants MainPageCancelColor]
-                                                icon:[UIImage imageNamed:@"Main_Trash_Temp"]];
+     [CoffeeUIColor OverdueColor]
+                                                icon:[UIImage imageNamed:@"Main_RightButton_Delete"]];
     return rightUtilityButtons;
 }
 
@@ -191,14 +169,26 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [self.hangoutView deselectRowAtIndexPath:indexPath animated:YES];
+    selectHangoutId = [self.hangoutView cellForRowAtIndexPath:indexPath].tag;
     [self performSegueWithIdentifier:@"HangoutDetails" sender:self];
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"HangoutDetails"])
+    {
+        HangoutDetailViewController * theSegue = segue.destinationViewController;
+        [theSegue LoadHangout:selectHangoutId];
+    }
+}
+
 
 -(void) addNewActivity: (UIButton *) sender
 {
     NSLog(@"Add New Activity");
     [self performSegueWithIdentifier:@"NewActivity" sender:self];
 }
+
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

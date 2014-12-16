@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "InvationTableCell.h"
-#import "SwipeView.h"
-#import "HVTableView.h"
+#import "SwipeView.h" 
 
 @interface HangoutInvationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SwipeViewDataSource, SwipeViewDelegate>
 

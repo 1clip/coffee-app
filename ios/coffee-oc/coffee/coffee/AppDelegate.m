@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "FakeData.h"
 
 @interface AppDelegate ()
 
@@ -24,7 +25,7 @@ BMKMapManager *_mapManager;
     if (!ret) {
         NSLog(@"manager start failed!");
     }
-    
+        
     
     
     return YES;

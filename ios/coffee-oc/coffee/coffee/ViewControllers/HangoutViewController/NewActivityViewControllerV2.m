@@ -7,7 +7,7 @@
 //
 
 #import "NewActivityViewControllerV2.h"
-#import "Constants.h"
+#import "ViewEnums.h"
 #import "QuartzCore/QuartzCore.h"
 #import "Placeholder.h"
 
@@ -25,7 +25,7 @@ static NSMutableArray *memberListData;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.activityView setBackgroundColor:[Constants NewActivityTableBackgroundColor]];
+    [self.activityView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
     self.activityView.type = iCarouselTypeCoverFlow2;
     
     [self InitTextBoxBorder:self.descView];
@@ -62,7 +62,7 @@ static NSMutableArray *memberListData;
 {
     textView.layer.cornerRadius=8.0f;
     textView.layer.masksToBounds=YES;
-    textView.layer.borderColor = [Constants OrangeBackgroundColor].CGColor; // set color as you want.
+    textView.layer.borderColor = [CoffeeUIColor PendingColor].CGColor; // set color as you want.
     textView.layer.borderWidth = 1.0;
 
 }
@@ -70,8 +70,8 @@ static NSMutableArray *memberListData;
 -(void) LoadFriendsView
 {
     [self.addressButton addTarget:self action:@selector(findAddress:) forControlEvents:UIControlEventTouchUpInside];
-    [self.inviteFriend setTextColor:[Constants AddActivityFontColor]];
-    [self.inviteFriendBorder setBackgroundColor:[Constants InviteFriendBorderColor]];
+    [self.inviteFriend setTextColor:[CoffeeUIColor AddActivityFontColor]];
+    [self.inviteFriendBorder setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
     
 
     if(memberListData == nil)
@@ -87,7 +87,7 @@ static NSMutableArray *memberListData;
     
     [self.addFriendButton addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.addLabel setTextColor:[Constants OrangeBackgroundColor]];
+    [self.addLabel setTextColor:[CoffeeUIColor PendingColor]];
     
     [self reloadMemberData];
     
@@ -190,7 +190,7 @@ static NSMutableArray *memberListData;
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, hight, hight)];
         if(index == self.activityView.currentItemIndex)
         {
-            [view setBackgroundColor:[Constants OrangeBackgroundColor]];
+            [view setBackgroundColor:[CoffeeUIColor PendingColor]];
         }
         else
         {

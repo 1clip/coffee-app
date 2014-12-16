@@ -22,6 +22,9 @@
 
 @property (assign, nonatomic) long token;
 
+//Temp
+@property (strong, nonatomic) NSString *imageUrl;
+
 @end
 
 @interface Character : IdObject
