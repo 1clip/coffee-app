@@ -87,7 +87,7 @@ static int RandomInt(int max) {
         hangout.id = [self randomIdWithType:IdTypeHangout];
     }
     hangout.subject = @"Today is my birthday!";
-    hangout.location = @"123 Pie Street, San Francisco, CS";
+    hangout.location = @"Zizhu Campus Building 01, No.999 Zixing Road, China";
     
     
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
