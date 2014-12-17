@@ -21,5 +21,6 @@
 -(User*) GetCurrentUser;
 -(User*) GetUserById:(long) userId;
 
+-(Hangout *)CreateHangout:(Hangout*) hangout Organizer:(User*) organizer;
 
 @end

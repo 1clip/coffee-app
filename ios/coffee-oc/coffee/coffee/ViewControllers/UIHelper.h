@@ -18,6 +18,8 @@
 
 +(NSString *)DisplayHangoutDate:(NSDate *)date;
 
++ (NSString *)DisplayHangoutTime:(NSDate *)date;
+
 +(HangoutParticipatorState) ConvertToParticipatorEnum:(NSString *) state;
 
 +(UIImage*) FindAddressButtonImage:(NSString *) particateState;

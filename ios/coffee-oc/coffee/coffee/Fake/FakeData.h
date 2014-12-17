@@ -36,4 +36,8 @@ typedef NS_ENUM(NSInteger, IdType) {
 -(User *)GetCurrentUser;
 
 -(User *) GetUserById: (long) userId;
+
+-(Hangout*) GetFakeHangout;
+
+-(Hangout *)CreateHangout:(Hangout*) hangout Organizer:(User*) organizer;
 @end

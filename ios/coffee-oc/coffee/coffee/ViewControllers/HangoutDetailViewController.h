@@ -41,6 +41,8 @@
 @property(nonatomic, strong) IBOutlet UILabel* addressLabel;
 @property(nonatomic, strong) IBOutlet UIButton* addressButton;
 
+@property(nonatomic, strong) IBOutlet UILabel* activityTitle;
+
 -(void) LoadHangout:(long) hangoutId;
 
 @end

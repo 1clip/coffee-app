@@ -7,6 +7,7 @@
 //
 
 #import "HangoutDetailViewController.h"
+#import "NewActivityViewControllerV2.h"
 #import "UITableGridViewCell.h"
 #import "ActivityReplyViewCell.h"
 #import "ViewEnums.h"
@@ -76,19 +77,20 @@ Participator *participator;
 
 -(void) InitDetailView
 {
-    [self.activityDetailView setBackgroundColor: currentHangoutSummary.state == [HangoutState Active] ? [UIHelper GetBackgroundColorByParticateState:participator.state] : [CoffeeUIColor OverdueBorderColor]];
+    [self.activityTitle setText:currentHangout.activity];
+    [self.activityDetailView setBackgroundColor: currentHangoutSummary.state == [HangoutState Active] ? [UIHelper GetBackgroundColorByParticateState:participator.state] : [CoffeeUIColor OverdueColor]];
     [self.actionBorder setBackgroundColor:[CoffeeUIColor BlackColorForAlpha]];
-    [self.avatorImageView setBorderColor:[UIHelper GetBorderColorByParticateState:participator.state]];
+    [self.avatorImageView setBorderColor:currentHangoutSummary.state == [HangoutState Active] ? [UIHelper GetBorderColorByParticateState:participator.state]: [CoffeeUIColor OverdueBorderColor]];
     [self.detailView setBackgroundColor:[CoffeeUIColor BlackColorForAlpha]];
-    
     
     
     self.locationLabel.text = currentHangout.subject;
     self.locationLabel.numberOfLines = 2;
     
+    self.firstButton.hidden = ![self CanTakeAction];
     [self.firstButton addTarget:self action:@selector(DetailView_ActionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.secondButton addTarget:self action:@selector(DetailView_AddressButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+    self.thirdButton.hidden = ![self CanEditHangout];
     [self.thirdButton addTarget:self action:@selector(DetailView_EditButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
 
@@ -96,8 +98,15 @@ Participator *participator;
 
 -(void) InitActionView
 {
+    if([self CanTakeAction])
+    {
+        [self setActionView:[UIHelper ConvertToParticipatorEnum:participator.state]];
+    }
+    else
+    {
+        [self hideActionView:NO];
+    }
     
-    [self setActionView:[UIHelper ConvertToParticipatorEnum:participator.state]];
     [self.addressButton setBackgroundImage:[UIHelper FindAddressButtonImage:participator.state] forState:UIControlStateNormal];
     self.addressLabel.hidden = YES;
     self.addressButton.hidden = YES;
@@ -236,7 +245,7 @@ Participator *participator;
     [HangoutHelper FindParticipatorByUserId:currentHangout UserId:currentUser.id].state = state;
     
     [self.addressButton setBackgroundImage:[UIImage imageNamed:@"AddressButton"] forState:UIControlStateNormal];
-    [self hideActionView];
+    [self hideActionView:YES];
 }
 
 -(void) ActionButtonClick:(UIButton *) sender
@@ -247,7 +256,7 @@ Participator *participator;
 }
 
 
--(void) hideActionView
+-(void) hideActionView:(BOOL) neddAnimations
 {
     _activityActionView.hidden = YES;
     NSLayoutConstraint *topConstraint;
@@ -260,10 +269,13 @@ Participator *participator;
     NSLayoutConstraint *newTop = [NSLayoutConstraint constraintWithItem:self.swipeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.activityDetailView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     [self.view removeConstraint:topConstraint];
     [self.view addConstraint:newTop];
-    [UIView animateWithDuration:.5 animations:^{
-        [self.swipeView layoutIfNeeded];
-    }];
     
+    if(neddAnimations)
+    {
+        [UIView animateWithDuration:.5 animations:^{
+            [self.swipeView layoutIfNeeded];
+        }];
+    }
     
     NSLayoutConstraint *heightConstraint;
     for (NSLayoutConstraint* constraint in self.activityStatusTableView.constraints) {
@@ -322,6 +334,15 @@ Participator *participator;
 -(void) DetailView_EditButtonClick:(UIButton *) sender
 {
     [self performSegueWithIdentifier:@"NewActivity" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"NewActivity"])
+    {
+        NewActivityViewControllerV2 * theSegue = segue.destinationViewController;
+        [theSegue LoadHangout:currentHangoutId];
+    }
 }
 
 
@@ -395,6 +416,16 @@ Participator *participator;
     [self setActionButton:self.leftButton Title:self.leftLabel Participate:leftState];
     [self setActionButton:self.rightButton Title:self.rightLabel Participate:rightState];
 
+}
+
+-(bool) CanTakeAction
+{
+    return currentHangoutSummary.state == [HangoutState Active];
+}
+
+-(bool) CanEditHangout
+{
+    return [self CanTakeAction] && currentHangoutSummary.organizer.id == currentUser.id;
 }
 
 /*

@@ -44,7 +44,20 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
-    [dateFormatter setDateFormat:@"MM/dd"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    
+    
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    
+    return destDateString;
+    
+}
+
++ (NSString *)DisplayHangoutTime:(NSDate *)date{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"HH:mm"];
     
     
     NSString *destDateString = [dateFormatter stringFromDate:date];
@@ -98,12 +111,13 @@
 
 +(NSString *) MapActiveImage: (NSString *) activityName
 {
-    return activityName;
+    return [NSString stringWithFormat:@"Activity_%@", activityName];
+
 }
 
 
 +(NSString *) MapActivePureImage: (NSString *) activityName
 {
-   return [NSString stringWithFormat:@"%@_Big", [activityName substringFromIndex:9]];
+   return [NSString stringWithFormat:@"%@_Big", activityName];
 }
 @end

@@ -86,12 +86,12 @@ static int RandomInt(int max) {
     if (needId) {
         hangout.id = [self randomIdWithType:IdTypeHangout];
     }
-    hangout.subject = @"Today is my birthday!";
+    hangout.subject = @"Today is my birthday! Let's have a dinner";
     hangout.location = @"Zizhu Campus Building 01, No.999 Zixing Road, China";
     
     
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
-    now -= fmod(now, 1);
+    now -= fmod(now, 1) - RandomInt(100000000);
     hangout.startTime = [NSDate dateWithTimeIntervalSince1970:now];
     hangout.endTime = [hangout.startTime dateByAddingTimeInterval: RandomInt(10000) + 1000];
     
@@ -191,22 +191,22 @@ static int RandomInt(int max) {
         Hangout *hangout = [self hangoutNeedId:YES];
         switch (i) {
             case 0:
-                hangout.activity = @"Activity_Dinner";
+                hangout.activity = @"Dinner";
                 break;
             case 1:
-                hangout.activity = @"Activity_Coffee";
+                hangout.activity = @"Coffee";
                 break;
             case 2:
-                hangout.activity = @"Activity_Shower";
+                hangout.activity = @"Shower";
                 break;
             case 3:
-                hangout.activity = @"Activity_KTV";
+                hangout.activity = @"KTV";
                 break;
             case 4:
-                hangout.activity = @"Activity_Movie";
+                hangout.activity = @"Movie";
                 break;
             case 5:
-                hangout.activity = @"Activity_Shopping";
+                hangout.activity = @"Shopping";
                 break;
             default:
                 break;
@@ -316,6 +316,26 @@ static int RandomInt(int max) {
 -(User *) GetCurrentUser
 {
     return self.currentUser;
+}
+
+-(Hangout*) GetFakeHangout
+{
+    Hangout* hangout = [[Hangout alloc] init];
+    hangout.id = [self randomIdWithType:IdTypeHangout];
+    
+    return hangout;
+}
+
+-(Hangout *)CreateHangout:(Hangout*) hangout Organizer:(User*) organizer
+{
+    [hangout.participators addObject:[self participator:organizer RoleForHangout:[ParticipatorRole Organizer] State:[ParticipatorState Accept]]];
+    
+    [self.hangoutList setObject:hangout forKey:[NSString stringWithFormat:@"%ld", hangout.id]];
+    HangoutSummary *hangoutSummary = [self CreateHangoutSummary:hangout StateForHangout:[HangoutState Active]];
+    [self.hangoutSummaryList addObject:hangoutSummary];
+    
+    return hangout;
+
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "SWTableViewCell.h"
 #import "CFAvatarView.h"
+#import "DataModels.h"
 
 @interface HangoutSWTableCell : SWTableViewCell
 
@@ -18,9 +19,14 @@
 
 @property(nonatomic, strong) IBOutlet UILabel* userNameLabel;
 @property(nonatomic, strong) IBOutlet UILabel* topicLabel1;
-@property(nonatomic, strong) IBOutlet UILabel* topicLabel2;
 
 @property(nonatomic, strong) IBOutlet UILabel* schedule;
+
+@property(nonatomic, strong) IBOutlet UILabel* acceptCount;
+@property(nonatomic, strong) IBOutlet UILabel* pendingCount;
+@property(nonatomic, strong) IBOutlet UILabel* rejectCount;
+
+-(void) setData:(Hangout *)hangout CurrentHangoutSummary:(HangoutSummary*) hangoutSummary UserParticipate:(Participator *)  myState;
 
 
 @end

@@ -58,6 +58,15 @@ long selectHangoutId;
     self.tabBarController.tabBar.barTintColor = [CoffeeUIColor GrayBackgroundColor];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
+    [self AddButtonForTabbar];
+    [self.view layoutIfNeeded];
+}
+
+
 -(void)AddButtonForTabbar
 {
 
@@ -70,14 +79,13 @@ long selectHangoutId;
         }
     }
     
-    
     UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0, -2, self.tabBarController.tabBar.frame.size.width, 3)];
     [borderView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
     borderView.tag = 200;
     [self.tabBarController.tabBar addSubview:borderView];
     
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    addButton.frame = CGRectMake(self.tabBarController.tabBar.frame.size.width / 2.0 - 20, 0, 40, 40);
+    addButton.frame = CGRectMake(self.tabBarController.tabBar.frame.size.width / 2.0 - 20, -10, 40, 40);
     [addButton setImage:[UIImage imageNamed:@"Main_Add"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addNewActivity:) forControlEvents:UIControlEventTouchUpInside];
     addButton.tag = 100;
@@ -103,15 +111,6 @@ long selectHangoutId;
     return 80;
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
-    self.navigationController.navigationBarHidden = YES;
-    self.tabBarController.tabBar.hidden = NO;
-    [self AddButtonForTabbar];
-    [self.view layoutIfNeeded];    
-}
-
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -122,47 +121,12 @@ long selectHangoutId;
         HangoutSummary *hangoutSummary = indexPath.section < activeHangout.count ? activeHangout[indexPath.section]:overdueHangout[indexPath.section - activeHangout.count];
         Hangout *hangout = [hangoutHelper GetHangoutDetails:hangoutSummary.id];
         Participator *myState = [HangoutHelper FindParticipatorByUserId:hangout UserId:currentUser.id];
-        NSString *avator = hangoutSummary.organizer.avatarInfo.imageUrl;
         
-        [cell.activityImage setBackgroundColor: (hangoutSummary.state == [HangoutState Active]) ? [UIHelper GetBackgroundColorByParticateState:myState.state] : [CoffeeUIColor OverdueColor]];
-        [cell.topicLabel1 setText: hangoutSummary.subject];
-        [cell.topicLabel1 setTextColor:[CoffeeUIColor MainPageFontColor]];
-            
-        [cell.topicLabel2 setText: hangoutSummary.subject];
-        [cell.topicLabel2 setTextColor:[CoffeeUIColor MainPageFontColor]];
-        
-        [cell.borderView setBackgroundColor:[CoffeeUIColor GrayBackgroundColor]];
-        
-        
-        [cell.activityImage setImage:[UIImage imageNamed:[UIHelper MapActiveImage:hangoutSummary.activity]]];
-        [cell.userNameLabel setText: hangoutSummary.organizer.friendlyName];
-        
-        [cell.userNameLabel setTextColor:[CoffeeUIColor MainPageFontColor]];
-        [cell.schedule setText: [NSString stringWithFormat:@"%@", [UIHelper DisplayHangoutDate:hangout.startTime]]];
-        [cell.avatorImage setImageWithURL:nil placeholderImage:[UIImage imageNamed:avator]];
-        [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:50];
-        
+        [cell setData:hangout CurrentHangoutSummary:hangoutSummary UserParticipate:myState];
         cell.delegate = self;
-        
         cell.tag = hangout.id;
     }
     return cell;
-}
-
-- (NSArray *)rightButtons
-{
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [CoffeeUIColor AcceptColor]
-                                                icon:[UIImage imageNamed:@"Main_RightButton_Accept"]];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [CoffeeUIColor CancelColor]
-                                                icon:[UIImage imageNamed:@"Main_RightButton_Cancel"]];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [CoffeeUIColor OverdueColor]
-                                                icon:[UIImage imageNamed:@"Main_RightButton_Delete"]];
-    return rightUtilityButtons;
 }
 
 

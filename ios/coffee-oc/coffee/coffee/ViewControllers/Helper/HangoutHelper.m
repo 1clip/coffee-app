@@ -75,4 +75,9 @@ static FakeData *fakeData;
 }
 
 
+-(Hangout *)CreateHangout:(Hangout*) hangout Organizer:(User*) organizer
+{
+    return [fakeData CreateHangout:hangout Organizer:organizer];
+}
+
 @end
